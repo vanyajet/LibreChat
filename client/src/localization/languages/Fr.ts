@@ -1796,6 +1796,10 @@ export const comparisons = {
     english: 'Change picture',
     translated: 'Changer de photo',
   },
+  com_nav_plugins: {
+    english: 'Plugins',
+    translated: 'Plugins',
+  },
   com_nav_plugin_store: {
     english: 'Plugin store',
     translated: 'Boutique de plugins',

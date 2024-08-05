@@ -1248,6 +1248,10 @@ export const comparisons = {
     english: 'Auto-Scroll to latest message on chat open',
     translated: 'Automatisch scrollen naar Nieuwste bij openen',
   },
+  com_nav_plugins: {
+    english: 'Plugins',
+    translated: 'Plugins',
+  },
   com_nav_plugin_store: {
     english: 'Plugin store',
     translated: 'Plugin-opslag',

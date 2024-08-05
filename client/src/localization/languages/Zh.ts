@@ -1982,6 +1982,10 @@ export const comparisons = {
     english: 'Change picture',
     translated: '修改头像',
   },
+  com_nav_plugins: {
+    english: 'Plugins',
+    translated: 'Plugins',
+  },
   com_nav_plugin_store: {
     english: 'Plugin store',
     translated: '插件商店',

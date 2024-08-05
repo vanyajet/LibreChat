@@ -1,9 +1,10 @@
-import { Wrench } from 'lucide-react';
+import { Smile, Wrench } from 'lucide-react';
 import { Root, Trigger, Content, Portal } from '@radix-ui/react-popover';
 import type { TPlugin } from 'librechat-data-provider';
 import MenuItem from '~/components/Chat/Menus/UI/MenuItem';
 import { useMultiSearch } from './MultiSearch';
 import { cn } from '~/utils/';
+import { useLocalize } from '~/hooks';
 
 type SelectDropDownProps = {
   title?: string;
@@ -32,7 +33,7 @@ function MultiSelectPop({
   optionValueKey = 'value',
   searchPlaceholder,
 }: SelectDropDownProps) {
-  // const localize = useLocalize();
+  const localize = useLocalize();
 
   const title = _title;
   const excludeIds = ['select-plugin', 'plugins-label', 'selected-plugins'];
@@ -75,7 +76,7 @@ function MultiSelectPop({
                   )} */}
                   <span className="flex items-center gap-1 ">
                     <div className="flex gap-1">
-                      {value.length === 0 && 'None selected'}
+                      {value.length === 0 && localize('com_ui_none_selected')}
                       {value.map((v, i) => (
                         <div key={i} className="relative">
                           {v.icon ? (
@@ -127,7 +128,11 @@ function MultiSelectPop({
                 return (
                   <MenuItem
                     key={`${option[optionValueKey]}`}
-                    title={option.name}
+                    title={
+                      option.name === 'Plugin store'
+                        ? localize('com_nav_plugin_store')
+                        : `${option.name}`
+                    }
                     value={option[optionValueKey]}
                     selected={selected}
                     onClick={() => setSelected(option.pluginKey)}

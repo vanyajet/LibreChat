@@ -2076,6 +2076,10 @@ export const comparisons = {
     english: 'Search plugins',
     translated: 'プラグイン検索',
   },
+  com_nav_plugins: {
+    english: 'Plugins',
+    translated: 'Plugins',
+  },
   com_nav_plugin_store: {
     english: 'Plugin store',
     translated: 'プラグインストア',

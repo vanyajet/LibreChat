@@ -1435,6 +1435,10 @@ export const comparisons = {
     english: 'to provide the full cookie strings.',
     translated: '전체 쿠키 문자열을 제공하세요',
   },
+  com_nav_plugins: {
+    english: 'Plugins',
+    translated: 'Plugins',
+  },
   com_nav_plugin_store: {
     english: 'Plugin store',
     translated: '플러그인 스토어',

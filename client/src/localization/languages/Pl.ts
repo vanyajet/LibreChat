@@ -924,6 +924,10 @@ export const comparisons = {
       'Enable skipping the completion step, which reviews the final answer and generated steps',
     translated: 'Omijaj etap uzupełnienia sprawdzający ostateczną odpowiedź i generowane kroki',
   },
+  com_nav_plugins: {
+    english: 'Plugins',
+    translated: 'Plugins',
+  },
   com_nav_plugin_store: {
     english: 'Plugin store',
     translated: 'Sklep z wtyczkami',

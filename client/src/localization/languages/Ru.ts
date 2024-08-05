@@ -304,6 +304,7 @@ export default {
   com_nav_hide_panel: 'Скрыть правую боковую панель',
   com_nav_modular_chat: 'Разрешить менять точки подключения в середине разговора',
   com_nav_latex_parsing: 'Обработка LaTeX в сообщениях (может повлиять на производительность)',
+  com_nav_plugins: 'Плагины',
   com_nav_plugin_store: 'Магазин плагинов',
   com_nav_plugin_search: 'Поиск плагинов',
   com_nav_plugin_auth_error:
@@ -1677,6 +1678,10 @@ export const comparisons = {
   com_nav_latex_parsing: {
     english: 'Parsing LaTeX in messages (may affect performance)',
     translated: 'Обработка LaTeX в сообщениях (может повлиять на производительность)',
+  },
+  com_nav_plugins: {
+    english: 'Plugins',
+    translated: 'Плагины',
   },
   com_nav_plugin_store: {
     english: 'Plugin store',

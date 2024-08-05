@@ -5,12 +5,14 @@ import { useGetEndpointsQuery } from 'librechat-data-provider/react-query';
 import MenuSeparator from '../UI/MenuSeparator';
 import { getEndpointField } from '~/utils';
 import MenuItem from './MenuItem';
+import { useLocalize } from '~/hooks';
 
 const EndpointItems: FC<{
   endpoints: EModelEndpoint[];
   selected: EModelEndpoint | '';
 }> = ({ endpoints, selected }) => {
   const { data: endpointsConfig } = useGetEndpointsQuery();
+  const localize = useLocalize();
   console.log('endpointsWW', endpoints);
   return (
     <>
@@ -34,7 +36,11 @@ const EndpointItems: FC<{
               <div key={`endpoint-${endpoint}`}>
                 <MenuItem
                   key={`endpoint-item-${endpoint}`}
-                  title={alternateName[endpoint] || endpoint}
+                  title={
+                    endpoint === 'gptPlugins'
+                      ? localize('com_nav_plugins')
+                      : alternateName[endpoint] || endpoint
+                  }
                   value={endpoint}
                   selected={selected === endpoint}
                   data-testid={`endpoint-item-${endpoint}`}

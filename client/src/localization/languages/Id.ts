@@ -1468,6 +1468,10 @@ export const comparisons = {
     english: 'Change picture',
     translated: 'Ubah foto',
   },
+  com_nav_plugins: {
+    english: 'Plugins',
+    translated: 'Plugins',
+  },
   com_nav_plugin_store: {
     english: 'Plugin store',
     translated: 'Toko plugin',

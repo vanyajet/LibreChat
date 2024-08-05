@@ -1459,6 +1459,10 @@ export const comparisons = {
     translated:
       '確保點選「建立並繼續」並至少給予「Vertex AI 使用者」角色。最後，建立一個 JSON 金鑰以在此處匯入。',
   },
+  com_nav_plugins: {
+    english: 'Plugins',
+    translated: 'Plugins',
+  },
   com_nav_plugin_store: {
     english: 'Plugin store',
     translated: '外掛商店',

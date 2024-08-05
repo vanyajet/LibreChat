@@ -544,6 +544,7 @@ export default {
   com_nav_speech_to_text: 'Speech to Text',
   com_nav_profile_picture: 'Profile Picture',
   com_nav_change_picture: 'Change picture',
+  com_nav_plugins: 'Plugins',
   com_nav_plugin_store: 'Plugin store',
   com_nav_plugin_install: 'Install',
   com_nav_plugin_uninstall: 'Uninstall',

@@ -1220,6 +1220,10 @@ export const comparisons = {
     english: 'Auto-Scroll to latest message on chat open',
     translated: 'Cuộn tự động đến tin nhắn mới nhất khi mở',
   },
+  com_nav_plugins: {
+    english: 'Plugins',
+    translated: 'Plugins',
+  },
   com_nav_plugin_store: {
     english: 'Plugin store',
     translated: 'Cửa hàng Plugin',

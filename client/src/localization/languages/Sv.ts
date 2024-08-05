@@ -1211,6 +1211,10 @@ export const comparisons = {
     translated:
       'Se till att klicka på "Skapa och fortsätt" för att ge åtminstone rollen "Vertex AI-användare". Skapa slutligen en JSON-nyckel att importera här.',
   },
+  com_nav_plugins: {
+    english: 'Plugins',
+    translated: 'Plugins',
+  },
   com_nav_plugin_store: {
     english: 'Plugin store',
     translated: 'Pluginbutik',

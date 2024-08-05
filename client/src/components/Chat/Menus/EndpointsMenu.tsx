@@ -6,6 +6,7 @@ import { useChatContext, useAssistantsMapContext } from '~/Providers';
 import EndpointItems from './Endpoints/MenuItems';
 import TitleButton from './UI/TitleButton';
 import { mapEndpoints } from '~/utils';
+import { useLocalize } from '~/hooks';
 
 const EndpointsMenu: FC = () => {
   const { data: endpoints = [] } = useGetEndpointsQuery({
@@ -15,6 +16,7 @@ const EndpointsMenu: FC = () => {
   const { conversation } = useChatContext();
   const { endpoint = '', assistant_id = null } = conversation ?? {};
   const assistantMap = useAssistantsMapContext();
+  const localize = useLocalize();
 
   const assistant =
     isAssistantsEndpoint(endpoint) && assistantMap?.[endpoint ?? '']?.[assistant_id ?? ''];
@@ -25,7 +27,11 @@ const EndpointsMenu: FC = () => {
     return null;
   }
 
-  const primaryText = assistant ? assistantName : (alternateName[endpoint] ?? endpoint ?? '') + ' ';
+  const primaryText = assistant
+    ? assistantName
+    : endpoint === 'gptPlugins'
+      ? localize('com_nav_plugins')
+      : (alternateName[endpoint] ?? endpoint ?? '') + ' ';
 
   return (
     <Root>
