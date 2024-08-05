@@ -21,6 +21,7 @@ const { logger } = require('~/config');
  */
 const spendTokens = async (txData, tokenUsage) => {
   const { promptTokens, completionTokens } = tokenUsage;
+  console.log('tokens', promptTokens, completionTokens, txData.model);
   logger.debug(
     `[spendTokens] conversationId: ${txData.conversationId}${
       txData?.context ? ` | Context: ${txData?.context}` : ''

@@ -11,6 +11,7 @@ const EndpointItems: FC<{
   selected: EModelEndpoint | '';
 }> = ({ endpoints, selected }) => {
   const { data: endpointsConfig } = useGetEndpointsQuery();
+  console.log('endpointsWW', endpoints);
   return (
     <>
       {endpoints &&
@@ -18,6 +19,9 @@ const EndpointItems: FC<{
           if (!endpoint) {
             return null;
           } else if (!endpointsConfig?.[endpoint]) {
+            return null;
+          } else if (endpoint === 'groq' || endpoint === 'OpenRouter') {
+            // временное решение для OpenRouter и groq
             return null;
           }
           const userProvidesKey: boolean | null | undefined = getEndpointField(

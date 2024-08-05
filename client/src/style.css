@@ -21,6 +21,19 @@
   --gizmo-gray-500:#999;
   --gizmo-gray-600:#666;
   --gizmo-gray-950:#0f0f0f
+  /* blue color scheme */
+  --primary-light: #A3C4F3;
+  --primary-medium: #D1E8FF;
+  --primary-dark: #2D4F75;
+  --secondary-light: #4A6FA1;
+  --secondary-medium: #3B597D;
+  --secondary-dark: #283B52;
+  --accent-light: #EAF2FB;
+  --accent-medium: #283B52;
+  --background-light: #FFFFFF;
+  --background-medium: #1B2735;
+  --text-light: #2D4F75;
+  --text-medium: #EAF2FB;
 }
 html {
   --text-primary:var(--gray-800);

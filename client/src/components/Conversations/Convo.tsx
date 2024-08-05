@@ -107,6 +107,7 @@ export default function Conversation({ conversation, retainView, toggleNav, isLa
         'hover:bg-token-sidebar-surface-secondary group relative rounded-lg active:opacity-90',
       )}
     >
+      {/* Chat button */}
       {renaming ? (
         <div className="absolute inset-0 z-50 flex w-full items-center rounded-lg bg-gray-200 p-1.5 dark:bg-gray-700">
           <input
@@ -125,6 +126,7 @@ export default function Conversation({ conversation, retainView, toggleNav, isLa
           isPopoverActive={isPopoverActive}
           setIsPopoverActive={setIsPopoverActive}
         >
+          {/* more dropdown button */}
           <DropDownMenu>
             {startupConfig && startupConfig.sharedLinksEnabled && (
               <ShareButton
@@ -167,9 +169,9 @@ export default function Conversation({ conversation, retainView, toggleNav, isLa
         onClick={clickHandler}
         className={cn(
           isActiveConvo || isPopoverActive
-            ? 'group relative mt-2 flex cursor-pointer items-center gap-2 break-all rounded-lg bg-gray-200 px-2 py-2 active:opacity-50 dark:bg-gray-700'
-            : 'group relative mt-2 flex grow cursor-pointer items-center gap-2 overflow-hidden whitespace-nowrap break-all rounded-lg px-2 py-2 hover:bg-gray-200 active:opacity-50 dark:hover:bg-gray-700',
-          !isActiveConvo && !renaming ? 'peer-hover:bg-gray-200 dark:peer-hover:bg-gray-800' : '',
+            ? 'group relative mt-2 flex cursor-pointer items-center gap-2 break-all rounded-lg bg-blue-400 px-2 py-2 active:opacity-50 dark:bg-gray-700'
+            : 'group relative mt-2 flex grow cursor-pointer items-center gap-2 overflow-hidden whitespace-nowrap break-all rounded-lg px-2 py-2 hover:bg-blue-200 active:opacity-50 dark:hover:bg-gray-700',
+          !isActiveConvo && !renaming ? 'peer-hover:bg-blue-200 dark:peer-hover:bg-gray-800' : '',
         )}
         title={title}
       >
@@ -186,11 +188,11 @@ export default function Conversation({ conversation, retainView, toggleNav, isLa
           <div
             className={cn(
               'absolute bottom-0 right-0 top-0 w-20 rounded-r-lg bg-gradient-to-l',
-              !renaming ? 'from-gray-200 from-60% to-transparent dark:from-gray-700' : '',
+              !renaming ? 'from-blue-400 from-60% to-transparent dark:from-gray-700' : '',
             )}
           />
         ) : (
-          <div className="absolute bottom-0 right-0 top-0 w-20 rounded-r-lg bg-gradient-to-l from-gray-50 from-0% to-transparent group-hover:from-gray-200 group-hover:from-60% dark:from-gray-850 dark:group-hover:from-gray-700" />
+          <div className="absolute bottom-0 right-0 top-0 w-20 rounded-r-lg bg-gradient-to-l from-gray-50 from-0% to-transparent group-hover:from-blue-200 group-hover:from-60% dark:from-gray-850 dark:group-hover:from-gray-700" />
         )}
       </a>
     </div>

@@ -1,5 +1,5 @@
 const { matchModelName } = require('../utils');
-const defaultRate = 6;
+const defaultRate = 0.005;
 
 /**
  * Mapping of model token sizes to their respective multipliers for prompt and completion.
@@ -7,30 +7,33 @@ const defaultRate = 6;
  * @type {Object.<string, {prompt: number, completion: number}>}
  */
 const tokenValues = {
-  '8k': { prompt: 30, completion: 60 },
-  '32k': { prompt: 60, completion: 120 },
-  '4k': { prompt: 1.5, completion: 2 },
-  '16k': { prompt: 3, completion: 4 },
-  'gpt-3.5-turbo-1106': { prompt: 1, completion: 2 },
-  'gpt-4o': { prompt: 5, completion: 15 },
-  'gpt-4-1106': { prompt: 10, completion: 30 },
-  'gpt-3.5-turbo-0125': { prompt: 0.5, completion: 1.5 },
-  'claude-3-opus': { prompt: 15, completion: 75 },
-  'claude-3-sonnet': { prompt: 3, completion: 15 },
-  'claude-3-5-sonnet': { prompt: 3, completion: 15 },
-  'claude-3-haiku': { prompt: 0.25, completion: 1.25 },
-  'claude-2.1': { prompt: 8, completion: 24 },
-  'claude-2': { prompt: 8, completion: 24 },
-  'claude-': { prompt: 0.8, completion: 2.4 },
-  'command-r-plus': { prompt: 3, completion: 15 },
-  'command-r': { prompt: 0.5, completion: 1.5 },
+  '8k': { prompt: 0.0015, completion: 0.003 },
+  '32k': { prompt: 0.003, completion: 0.006 },
+  '4k': { prompt: 0.0008, completion: 0.001 },
+  '16k': { prompt: 0.0015, completion: 0.002 },
+  'gpt-3.5-turbo-1106': { prompt: 0.0005, completion: 0.001 },
+  'gpt-4o': { prompt: 0.0075, completion: 0.027 }, // 0.75 / 2.7 rub per 1000 tokens
+  'gpt-4-1106': { prompt: 0.005, completion: 0.015 },
+  'gpt-3.5-turbo-0125': { prompt: 0.00025, completion: 0.0008 },
+  'claude-3-opus': { prompt: 0.0008, completion: 0.004 },
+  'claude-3-sonnet': { prompt: 0.0015, completion: 0.0008 },
+  'claude-3-5-sonnet': { prompt: 0.0015, completion: 0.0008 },
+  'claude-3-haiku': { prompt: 0.00015, completion: 0.00025 },
+  'claude-2.1': { prompt: 0.008, completion: 0.004 },
+  'claude-2': { prompt: 0.008, completion: 0.0024 },
+  'claude-': { prompt: 0.0008, completion: 0.00024 },
+  mistral: { prompt: 0.005, completion: 0.015 },
+  'open-mistral-7b': { prompt: 0.005, completion: 0.015 },
+  'mistral-tiny': { prompt: 0.003, completion: 0.008 },
+  'command-r-plus': { prompt: 0.003, completion: 0.0015 },
+  'command-r': { prompt: 0.0005, completion: 0.00015 },
   /* cohere doesn't have rates for the older command models,
   so this was from https://artificialanalysis.ai/models/command-light/providers */
   command: { prompt: 0.38, completion: 0.38 },
   // 'gemini-1.5': { prompt: 7, completion: 21 }, // May 2nd, 2024 pricing
   // 'gemini': { prompt: 0.5, completion: 1.5 }, // May 2nd, 2024 pricing
-  'gemini-1.5': { prompt: 0, completion: 0 }, // currently free
-  gemini: { prompt: 0, completion: 0 }, // currently free
+  'gemini-1.5': { prompt: 0.0012, completion: 0.0026 }, // currently free
+  gemini: { prompt: 0.001, completion: 0.0023 }, // currently free
 };
 
 /**

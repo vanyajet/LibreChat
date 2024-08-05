@@ -25,6 +25,7 @@ const {
   truncateText,
 } = require('./prompts');
 const BaseClient = require('./BaseClient');
+const spendTokens = require('~/models/spendTokens');
 
 const loc = 'us-central1';
 const publisher = 'google';
@@ -363,9 +364,33 @@ class GoogleClient extends BaseClient {
     this.userLabel = 'user';
     this.modelLabel = 'model';
     const promises = [];
+    const generativeMessages = await this.formatGenerativeMessages(messages);
+    console.log('generativeMessages', generativeMessages);
+    console.log('Messages', messages);
     promises.push(await this.formatGenerativeMessages(messages));
     promises.push(this.buildAugmentedPrompt(messages));
     const [formattedMessages] = await Promise.all(promises);
+
+    let promptTokens = 0;
+    const messagesWithTokens = formattedMessages.map((message) => {
+      const parts = message.parts.map((part) => {
+        if (part.text) {
+          const tokenCount = this.getTokenCount(part.text);
+          console.log(part.text, tokenCount);
+          promptTokens += tokenCount;
+          return {
+            ...part,
+            tokenCount,
+          };
+        }
+        return part;
+      });
+      return {
+        ...message,
+        parts,
+      };
+    });
+    console.log('messagesWithTokens', messagesWithTokens, promptTokens);
     return { prompt: formattedMessages };
   }
 
@@ -832,6 +857,16 @@ class GoogleClient extends BaseClient {
       payload.parameters = { ...payload.parameters, model: settings.model.default };
     }
 
+    const promptTokens = this.getTokenCountForMessage(text);
+    const completionTokens = this.getTokenCount(responseText);
+    console.log(
+      'Google promptTokensCount and completionTokensCount',
+      promptTokens,
+      completionTokens,
+    );
+
+    this.recordTokenUsage({ promptTokens, completionTokens, context: 'message' });
+
     try {
       title = await this.titleChatCompletion(payload, {
         abortController: new AbortController(),
@@ -905,6 +940,26 @@ class GoogleClient extends BaseClient {
     }
     tokenizersCache[encoding] = tokenizer;
     return tokenizer;
+  }
+
+  async recordTokenUsage({ promptTokens, completionTokens, context = 'message' }) {
+    await spendTokens(
+      {
+        context,
+        model: this.modelOptions.model,
+        conversationId: this.conversationId,
+        user: this.user ?? this.options.req.user?.id,
+        endpointTokenConfig: this.options.endpointTokenConfig,
+      },
+      { promptTokens, completionTokens },
+    );
+  }
+
+  getTokenCountForResponse(response) {
+    return this.getTokenCountForMessage({
+      role: 'assistant',
+      content: response.text,
+    });
   }
 
   getTokenCount(text) {

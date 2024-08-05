@@ -58,6 +58,7 @@ class BaseClient {
   }
 
   async recordTokenUsage({ promptTokens, completionTokens }) {
+    console.log('recordTokenUsageFUnciton');
     logger.debug('`[BaseClient] recordTokenUsage` not implemented.', {
       promptTokens,
       completionTokens,
@@ -529,16 +530,16 @@ class BaseClient {
       ...(this.metadata ?? {}),
     };
 
-    if (
-      tokenCountMap &&
-      this.recordTokenUsage &&
-      this.getTokenCountForResponse &&
-      this.getTokenCount
-    ) {
-      responseMessage.tokenCount = this.getTokenCountForResponse(responseMessage);
-      const completionTokens = this.getTokenCount(completion);
-      await this.recordTokenUsage({ promptTokens, completionTokens });
-    }
+    // if (
+    //   tokenCountMap &&
+    //   this.recordTokenUsage &&
+    //   this.getTokenCountForResponse &&
+    //   this.getTokenCount
+    // ) {
+    responseMessage.tokenCount = this.getTokenCountForResponse(responseMessage);
+    const completionTokens = this.getTokenCount(completion);
+    await this.recordTokenUsage({ promptTokens, completionTokens });
+    // }
     this.responsePromise = this.saveMessageToDatabase(responseMessage, saveOptions, user);
     delete responseMessage.tokenCount;
     return responseMessage;

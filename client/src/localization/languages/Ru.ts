@@ -344,6 +344,8 @@ export default {
   com_nav_send_message: 'Отправить сообщение',
   com_nav_log_out: 'Выйти',
   com_nav_user: 'ПОЛЬЗОВАТЕЛЬ',
+  com_nav_balance: 'Баланс',
+  com_nav_top_up: 'Пополнить',
   com_nav_archived_chats: 'Архивированные чаты',
   com_nav_archived_chats_manage: 'Управление',
   com_nav_archived_chats_empty: 'У вас нет архивированных разговоров.',

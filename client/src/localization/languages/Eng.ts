@@ -604,6 +604,7 @@ export default {
   com_nav_send_message: 'Send message',
   com_nav_log_out: 'Log out',
   com_nav_user: 'USER',
+  com_nav_balance: 'Balance',
   com_nav_archived_chats: 'Archived chats',
   com_nav_archived_chats_manage: 'Manage',
   com_nav_archived_chats_empty: 'You have no archived conversations.',

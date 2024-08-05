@@ -1,4 +1,4 @@
-import { FileText } from 'lucide-react';
+import { FileText, Plus, RussianRuble } from 'lucide-react';
 import { useRecoilState } from 'recoil';
 import { Fragment, useState, memo } from 'react';
 import { Menu, Transition } from '@headlessui/react';
@@ -32,6 +32,7 @@ function NavLinks() {
       <Menu as="div" className="group relative">
         {({ open }) => (
           <>
+            {/* user button */}
             <Menu.Button
               className={cn(
                 'group-ui-open:bg-gray-100 dark:group-ui-open:bg-gray-700 duration-350 mt-text-sm flex h-auto w-full items-center gap-2 rounded-lg p-2 text-sm transition-colors hover:bg-gray-100 dark:hover:bg-gray-800',
@@ -64,6 +65,21 @@ function NavLinks() {
               >
                 {user?.name || user?.username || localize('com_nav_user')}
               </div>
+              {startupConfig?.checkBalance &&
+              balanceQuery.data &&
+              !isNaN(parseFloat(balanceQuery.data)) ? (
+                  <>
+                    <div className="text-token-text-secondary flex items-center py-2 text-sm">
+                      {`${parseFloat(balanceQuery.data).toFixed(2)}`} <RussianRuble size={14} />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="text-token-text-secondary flex items-center py-2 text-sm">
+                    0 <RussianRuble />{' '}
+                    </div>
+                  </>
+                )}
             </Menu.Button>
 
             <Transition
@@ -81,15 +97,36 @@ function NavLinks() {
                 </div>
                 <div className="my-1.5 h-px bg-black/10 dark:bg-white/10" role="none" />
                 {startupConfig?.checkBalance &&
-                  balanceQuery.data &&
-                  !isNaN(parseFloat(balanceQuery.data)) && (
-                  <>
-                    <div className="text-token-text-secondary ml-3 mr-2 py-2 text-sm">
-                      {`Balance: ${parseFloat(balanceQuery.data).toFixed(2)}`}
-                    </div>
-                    <div className="my-1.5 h-px bg-black/10 dark:bg-white/10" role="none" />
-                  </>
-                )}
+                balanceQuery.data &&
+                !isNaN(parseFloat(balanceQuery.data)) ? (
+                    <>
+                      <div className="text-token-text-secondary ml-3 mr-2 py-2 text-sm">
+                        {`${
+                          localize('com_nav_balance') ? localize('com_nav_balance') : 'Balance'
+                        }: ${parseFloat(balanceQuery.data).toFixed(2)}`}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="text-token-text-secondary ml-3 mr-2 py-2 text-sm">
+                        {`${
+                          localize('com_nav_balance') ? localize('com_nav_balance') : 'Balance'
+                        }: 0`}
+                      </div>
+                    </>
+                  )}
+                <Menu.Item as="div">
+                  <NavLink
+                    svg={() => <Plus className="icon-md" />}
+                    text={localize('com_nav_top_up') ? localize('com_nav_top_up') : '+ Top Up'}
+                    className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition duration-500 duration-500 ease-in-out ease-in-out hover:bg-gradient-to-br hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600 hover:transition"
+                    clickHandler={() => {
+                      // Implement your logic for handling the "Пополнить" button click
+                      console.log('Top up button clicked!');
+                    }}
+                  />
+                </Menu.Item>
+                <div className="my-1.5 h-px bg-black/10 dark:bg-white/10" role="none" />
                 <Menu.Item as="div">
                   <NavLink
                     svg={() => <FileText className="icon-md" />}

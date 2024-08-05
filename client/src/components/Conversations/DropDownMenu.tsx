@@ -27,7 +27,7 @@ const DropDownMenu: FC<DropDownMenuProps> = ({
         <div
           className={cn(
             'pointer-cursor relative flex flex-col text-left focus:outline-none focus:ring-0 focus:ring-offset-0 sm:text-sm',
-            'hover:text-gray-400 radix-state-open:text-gray-400 dark:hover:text-gray-400 dark:radix-state-open:text-gray-400',
+            'hover:text-black radix-state-open:text-gray-400 dark:hover:text-gray-400 dark:radix-state-open:text-gray-400',
             'z-50 flex h-[40px] min-w-4 flex-none items-center justify-center focus:ring-0 focus:ring-offset-0',
           )}
           id="edit-menu-button"
@@ -40,7 +40,7 @@ const DropDownMenu: FC<DropDownMenuProps> = ({
                 <button type="button" className={className}>
                   {cloneElement(icon, {
                     className:
-                      'h-[18px] w-[18px] flex-shrink-0 text-gray-500 hover:text-gray-400 dark:text-gray-300 dark:hover:text-gray-400',
+                      'h-[18px] w-[18px] flex-shrink-0 text-gray-500 hover:text-black dark:text-gray-300 dark:hover:text-gray-400',
                   })}
                 </button>
               </TooltipTrigger>
