@@ -27,6 +27,7 @@ export default function Settings({
     endpoint,
     endpointType,
     chatGptLabel,
+    description,
     promptPrefix,
     temperature,
     top_p: topP,
@@ -39,6 +40,11 @@ export default function Settings({
     setOption,
     optionKey: 'chatGptLabel',
     initialValue: chatGptLabel,
+  });
+  const [setDescription, descriptionValue] = useDebouncedInput({
+    setOption,
+    optionKey: 'description',
+    initialValue: description,
   });
   const [setPromptPrefix, promptPrefixValue] = useDebouncedInput({
     setOption,
@@ -89,6 +95,24 @@ export default function Settings({
             value={(chatGptLabelValue as string) || ''}
             onChange={setChatGptLabel}
             placeholder={localize('com_endpoint_openai_custom_name_placeholder')}
+            className={cn(
+              defaultTextProps,
+              'flex h-10 max-h-10 w-full resize-none px-3 py-2',
+              removeFocusOutlines,
+            )}
+          />
+        </div>
+        <div className="grid w-full items-center gap-2">
+          <Label htmlFor="description" className="text-left text-sm font-medium">
+            {localize('com_ui_description')}{' '}
+            <small className="opacity-40">{localize('com_endpoint_default_empty')}</small>
+          </Label>
+          <Input
+            id="description"
+            disabled={readonly}
+            value={descriptionValue || ''}
+            onChange={(e) => setDescription(e.target.value ?? null)}
+            placeholder={localize('com_ui_description')}
             className={cn(
               defaultTextProps,
               'flex h-10 max-h-10 w-full resize-none px-3 py-2',

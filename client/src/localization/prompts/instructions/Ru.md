@@ -749,7 +749,7 @@ Write a prompt that is mindful of the nuances in the language with respect to it
 
 - **com_endpoint_preset_default**:
   - **english**: is now the default preset.
-  - **translated**: теперь пресет По умолчаанию.
+  - **translated**: теперь пресет По умолчанию.
 
 - **com_endpoint_preset**:
   - **english**: preset

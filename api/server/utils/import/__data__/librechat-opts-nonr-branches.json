@@ -9,6 +9,7 @@
     "presetId": null,
     "model": "gpt-4o",
     "chatGptLabel": null,
+    "description": null,
     "promptPrefix": null,
     "temperature": 1,
     "top_p": 1,

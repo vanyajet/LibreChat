@@ -415,6 +415,7 @@ class OpenAIClient extends BaseClient {
     return {
       maxContextTokens: this.options.maxContextTokens,
       chatGptLabel: this.options.chatGptLabel,
+      description: this.options.description,
       promptPrefix: this.options.promptPrefix,
       resendFiles: this.options.resendFiles,
       imageDetail: this.options.imageDetail,

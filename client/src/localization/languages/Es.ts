@@ -597,6 +597,48 @@ export default {
   com_nav_lang_dutch: 'Holandés',
   com_nav_lang_indonesia: 'Indonesia',
   com_nav_lang_hebrew: 'עברית',
+  com_privacy_policy_title: 'Politique de Confidentialité',
+  com_privacy_policy_header: 'Politique de Confidentialité de Profi.ai',
+  com_privacy_policy_intro:
+    'Chez Profi.ai, nous comprenons l\'importance de la confidentialité et de la sécurité des données pour nos utilisateurs. Cette Politique de Confidentialité explique quelles informations nous collectons, comment nous les utilisons et les mesures que nous prenons pour les protéger. En utilisant notre application, vous acceptez les termes de cette Politique de Confidentialité.',
+  com_privacy_policy_h_1: '1. Collecte d\'informations',
+  com_privacy_policy_p_1: 'Nous pouvons collecter les types d\'informations suivants:',
+  com_privacy_policy_li_1_1: 'Données personnelles: nom, adresse email, informations de contact.',
+  com_privacy_policy_li_1_2:
+    'Données d\'utilisation: informations sur comment vous utilisez notre application, y compris la durée des sessions, les requêtes saisies et les réponses.',
+  com_privacy_policy_li_1_3:
+    'Données des appareils et des journaux: informations sur votre appareil, adresse IP, type de navigateur et système d\'exploitation.',
+  com_privacy_policy_h_2: '2. Utilisation des informations',
+  com_privacy_policy_p_2: 'Les données collectées sont utilisées pour:',
+  com_privacy_policy_li_2_1: 'Fournir et améliorer l\'application.',
+  com_privacy_policy_li_2_2: 'Personnaliser votre expérience avec l\'application.',
+  com_privacy_policy_li_2_3: 'Assurer la sécurité et prévenir la fraude.',
+  com_privacy_policy_li_2_4: 'Analyse et recherche pour améliorer nos produits et services.',
+  com_privacy_policy_h_3: '3. Partage d\'informations',
+  com_privacy_policy_p_3:
+    'Nous ne partageons pas vos informations personnelles avec des tiers, sauf dans les cas suivants:',
+  com_privacy_policy_li_3_1: 'Avec votre consentement.',
+  com_privacy_policy_li_3_2:
+    'Pour se conformer à la loi, aux procédures légales ou pour protéger nos droits et propriétés.',
+  com_privacy_policy_li_3_3:
+    'En collaboration avec des services partenaires qui nous aident à fournir nos services (par exemple, des fournisseurs d\'hébergement).',
+  com_privacy_policy_h_4: '4. Protection des données',
+  com_privacy_policy_p_4:
+    'Nous prenons des mesures raisonnables pour protéger vos données contre tout accès non autorisé, modification, divulgation ou destruction. Cependant, aucune méthode de transmission ou de stockage n\'est complètement sécurisée.',
+  com_privacy_policy_h_5: '5. Vos droits',
+  com_privacy_policy_p_5:
+    'Selon votre localisation, vous pouvez avoir des droits concernant vos données, y compris le droit d\'accès, de correction, de suppression et de limitation du traitement de vos données. Pour exercer ces droits, veuillez nous contacter aux coordonnées ci-dessous.',
+  com_privacy_policy_h_6: '6. Cookies et technologies similaires',
+  com_privacy_policy_p_6:
+    'Nous utilisons des cookies et des technologies similaires pour améliorer la fonctionnalité de notre application et analyser l\'utilisation. Vous pouvez configurer votre navigateur pour refuser les cookies, mais cela peut affecter la fonctionnalité de certaines fonctionnalités de l\'application.',
+  com_privacy_policy_h_7: '7. Modifications de la Politique de Confidentialité',
+  com_privacy_policy_p_7:
+    'Nous pouvons périodiquement mettre à jour cette Politique de Confidentialité. Tous les changements seront publiés sur cette page avec la date d\'entrée en vigueur. Nous vous encourageons à consulter régulièrement cette page pour rester informé de toute mise à jour.',
+  com_privacy_policy_h_8: '8. Nous contacter',
+  com_privacy_policy_p_8:
+    'Si vous avez des questions ou des commentaires concernant cette Politique de Confidentialité, veuillez nous contacter :',
+  com_privacy_policy_li_8_1: 'Email: help.profi.ai@mail.ru',
+  com_privacy_policy_li_8_2: 'Adresse: [insérer votre adresse]',
 };
 
 export const comparisons = {

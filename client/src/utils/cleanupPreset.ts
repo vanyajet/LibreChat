@@ -27,6 +27,7 @@ const cleanupPreset = ({ preset: _preset }: TCleanupPreset): TPreset => {
     ...parsedPreset,
     endpoint,
     endpointType,
+    description: _preset?.description ?? null,
     title: _preset?.title ?? 'New Preset',
   } as TPreset;
 };

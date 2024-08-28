@@ -76,7 +76,7 @@ function NavLinks() {
                 ) : (
                   <>
                     <div className="text-token-text-secondary flex items-center py-2 text-sm">
-                    0 <RussianRuble />{' '}
+                    0 <RussianRuble size={14} />{' '}
                     </div>
                   </>
                 )}
@@ -118,7 +118,7 @@ function NavLinks() {
                 <Menu.Item as="div">
                   <NavLink
                     svg={() => <Plus className="icon-md" />}
-                    text={localize('com_nav_top_up') ? localize('com_nav_top_up') : '+ Top Up'}
+                    text={localize('com_nav_top_up') ? localize('com_nav_top_up') : 'Top Up'}
                     className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition duration-500 duration-500 ease-in-out ease-in-out hover:bg-gradient-to-br hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600 hover:transition"
                     clickHandler={() => {
                       // Implement your logic for handling the "Пополнить" button click

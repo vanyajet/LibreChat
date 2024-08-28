@@ -41,6 +41,7 @@ class PluginsClient extends OpenAIClient {
   getSaveOptions() {
     return {
       chatGptLabel: this.options.chatGptLabel,
+      description: this.options.description,
       promptPrefix: this.options.promptPrefix,
       tools: this.options.tools,
       ...this.modelOptions,

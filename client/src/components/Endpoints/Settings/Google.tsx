@@ -22,6 +22,7 @@ export default function Settings({ conversation, setOption, models, readonly }: 
   const {
     model,
     modelLabel,
+    description,
     promptPrefix,
     temperature,
     topP,
@@ -37,6 +38,12 @@ export default function Settings({ conversation, setOption, models, readonly }: 
       initialValue: maxContextTokens,
     },
   );
+
+  const [setDescription, descriptionValue] = useDebouncedInput<string | null | undefined>({
+    setOption,
+    optionKey: 'description',
+    initialValue: description,
+  });
 
   if (!conversation) {
     return null;
@@ -74,6 +81,24 @@ export default function Settings({ conversation, setOption, models, readonly }: 
             value={modelLabel || ''}
             onChange={(e) => setModelLabel(e.target.value ?? null)}
             placeholder={localize('com_endpoint_google_custom_name_placeholder')}
+            className={cn(
+              defaultTextProps,
+              'flex h-10 max-h-10 w-full resize-none px-3 py-2',
+              removeFocusOutlines,
+            )}
+          />
+        </div>
+        <div className="grid w-full items-center gap-2">
+          <Label htmlFor="description" className="text-left text-sm font-medium">
+            {localize('com_ui_description')}{' '}
+            <small className="opacity-40">{localize('com_endpoint_default_empty')}</small>
+          </Label>
+          <Input
+            id="description"
+            disabled={readonly}
+            value={descriptionValue || ''}
+            onChange={(e) => setDescription(e.target.value ?? null)}
+            placeholder={localize('com_ui_description')}
             className={cn(
               defaultTextProps,
               'flex h-10 max-h-10 w-full resize-none px-3 py-2',

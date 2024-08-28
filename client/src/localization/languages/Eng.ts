@@ -14,6 +14,8 @@ export default {
   com_files_filter: 'Filter files...',
   com_files_number_selected: '{0} of {1} file(s) selected',
   com_sidepanel_select_assistant: 'Select an Assistant',
+  com_sidepanel_select_preset: 'Select a Preset',
+  com_sidepanel_create_preset: 'Create new Preset',
   com_sidepanel_parameters: 'Parameters',
   com_sidepanel_assistant_builder: 'Assistant Builder',
   com_sidepanel_hide_panel: 'Hide Panel',
@@ -682,4 +684,119 @@ export default {
   com_nav_lang_dutch: 'Nederlands',
   com_nav_lang_indonesia: 'Indonesia',
   com_nav_lang_hebrew: 'עברית',
+  com_privacy_policy_title: 'Privacy Policy',
+  com_privacy_policy_header: 'Privacy Policy of Profi.ai',
+  com_privacy_policy_intro:
+    'At Profi.ai, we understand the importance of privacy and data security for our users. This Privacy Policy explains what information we collect, how we use it, and the measures we take to protect it. By using our application, you agree to the terms of this Privacy Policy.',
+  com_privacy_policy_h_1: '1. Information Collection',
+  com_privacy_policy_p_1: 'We may collect the following types of information:',
+  com_privacy_policy_li_1_1: 'Personal Data: name, email address, contact information.',
+  com_privacy_policy_li_1_2:
+    'Usage Data: information about how you use our application, including session duration, queries entered, and responses.',
+  com_privacy_policy_li_1_3:
+    'Device and Log Data: information about your device, IP address, browser type, and operating system.',
+  com_privacy_policy_h_2: '2. Use of Information',
+  com_privacy_policy_p_2: 'The collected data is used for:',
+  com_privacy_policy_li_2_1: 'Providing and improving the application.',
+  com_privacy_policy_li_2_2: 'Personalizing your experience with the application.',
+  com_privacy_policy_li_2_3: 'Ensuring security and preventing fraud.',
+  com_privacy_policy_li_2_4: 'Analysis and research to improve our products and services.',
+  com_privacy_policy_h_3: '3. Information Sharing',
+  com_privacy_policy_p_3:
+    'We do not share your personal information with third parties, except in the following cases:',
+  com_privacy_policy_li_3_1: 'With your consent.',
+  com_privacy_policy_li_3_2:
+    'To comply with the law, legal proceedings, or protect our rights and property.',
+  com_privacy_policy_li_3_3:
+    'In collaboration with partner services that help us provide our services (e.g., hosting providers).',
+  com_privacy_policy_h_4: '4. Data Protection',
+  com_privacy_policy_p_4:
+    'We take reasonable measures to protect your data from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission or storage is completely secure.',
+  com_privacy_policy_h_5: '5. Your Rights',
+  com_privacy_policy_p_5:
+    'Depending on your location, you may have rights regarding your data, including the right to access, correct, delete, and restrict the processing of your data. To exercise these rights, please contact us at the provided contacts below.',
+  com_privacy_policy_h_6: '6. Cookies and Similar Technologies',
+  com_privacy_policy_p_6:
+    'We use cookies and similar technologies to enhance the functionality of our application and analyze usage. You can configure your browser to refuse cookies, but this may affect the functionality of certain features of the application.',
+  com_privacy_policy_h_7: '7. Changes to the Privacy Policy',
+  com_privacy_policy_p_7:
+    'We may periodically update this Privacy Policy. All changes will be posted on this page with the effective date. We encourage you to review this page regularly to stay informed about any updates.',
+  com_privacy_policy_h_8: '8. Contact Us',
+  com_privacy_policy_p_8:
+    'If you have any questions or comments regarding this Privacy Policy, please contact us:',
+  com_privacy_policy_li_8_1: 'Email: help.profi.ai@mail.ru',
+  com_privacy_policy_li_8_2: 'Address: [insert your address]',
+  com_terms_of_use_1: 'Terms and Conditions of Use',
+  com_terms_of_use_2:
+    'These Terms and Conditions (\'Terms\', \'Conditions\') govern your relationship with the website https://profi.ai (\'Service\'). Please read these Terms and Conditions carefully before using the Service. Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, intermediaries, and others who access or use the Service. By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the Service.',
+  com_terms_of_use_8: '1. Availability, Errors, and Inaccuracies',
+  com_terms_of_use_9:
+    'We are constantly updating our product and service offerings on the Service. The products or services available on our Service may be inaccurately priced, inaccurately described, or unavailable, and we may experience delays in updating information on the Service and in our advertising on other websites. We cannot and do not guarantee the accuracy or completeness of any information, including prices, product images, specifications, availability, and services. We reserve the right to change or update information and to correct errors, inaccuracies, or omissions at any time without prior notice.',
+  com_terms_of_use_10: '2. Accounts',
+  com_terms_of_use_12:
+    'You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password, whether your password is with our Service or a third-party service. You agree to notify us immediately upon becoming aware of any breach of security or unauthorized use of your account.',
+  com_terms_of_use_13:
+    'profi.ai reserves the right to deactivate a user\'s account in the event of fraudulent activities committed by the user during the existence of profi.ai.',
+  com_terms_of_use_14: 'Actions that may be considered fraudulent activities:',
+  com_terms_of_use_15: 'creating multiple accounts under one name;',
+  com_terms_of_use_16: 'creating multiple accounts to repeatedly use profi.ai bonuses;',
+  com_terms_of_use_17:
+    'fraudulent payments with stolen credit cards or other fraudulent payment methods;',
+  com_terms_of_use_18:
+    'any behavior that presents signs of fraudulent activity and risks to the Service.',
+  com_terms_of_use_19:
+    'Our users retain full ownership and copyright over all designs uploaded to our site, profi.ai social media pages, and emails created by our users. We will never access or view any emails created by our users without their consent.',
+  com_terms_of_use_20: '3. Links to Other Websites',
+  com_terms_of_use_21:
+    'Our Service may contain links to third-party websites or services that are not owned or controlled by profi.ai. profi.ai has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites or services. You acknowledge and agree that profi.ai shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods, or services available on or through any such websites or services. We strongly advise you to read the terms and conditions and privacy policies of any third-party websites or services that you visit.',
+  com_terms_of_use_3: '4. Purchases',
+  com_terms_of_use_4:
+    'If you wish to top up your balance for service use, you may be asked to provide certain relevant information regarding your Purchase, including, without limitation, your credit card number, the expiration date of your credit card, your billing address, and your shipping information. You represent and warrant that:',
+  com_terms_of_use_4_1:
+    'you have the legal right to use any credit card(s) or other payment method(s) in connection with any Purchase;',
+  com_terms_of_use_4_2: 'the information you provide to us is true, correct, and complete.',
+  com_terms_of_use_5:
+    'By submitting such information, you grant us the right to provide it to third parties (payment providers) for purposes of facilitating the completion of top-ups.',
+  com_terms_of_use_7:
+    'We reserve the right to refuse or cancel your order if fraud or unauthorized or illegal transaction is suspected.',
+  com_terms_of_use_22: '5. Refunds',
+  com_terms_of_use_23:
+    'We generally provide refunds for payments you have made to our service, but no more than the amount remaining in your main balance. We reserve the right to deduct funds from your balance if fraud has been committed and we suspect that you have caused damage to our service.',
+  com_terms_of_use_24: '6. Terms of Service',
+  com_terms_of_use_25:
+    'The term of service begins from the moment the Client creates an account until the declaration of account closure.',
+  com_terms_of_use_25_1: 'The contract terminates upon expiration of its term.',
+  com_terms_of_use_26: '7. Termination',
+  com_terms_of_use_27:
+    'We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including but not limited to breach of the Terms. Upon termination, your right to use the Services will immediately cease. If you wish to terminate your account, you may simply discontinue using the Service.',
+  com_terms_of_use_27_1: '8. Limitation of Liability',
+  com_terms_of_use_27_2:
+    'In no event shall profi.ai, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from',
+  com_terms_of_use_28: 'your access to or use of or inability to access or use the Service;',
+  com_terms_of_use_29: 'any conduct or content of any third party on the Service;',
+  com_terms_of_use_30: 'any content obtained from the Service;',
+  com_terms_of_use_31:
+    'unauthorized access, use, or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence) or any other legal theory, whether or not we have been informed of the possibility of such damage, and even if a remedy set forth herein is found to have failed of its essential purpose.',
+  com_terms_of_use_32: '9. Disclaimer',
+  com_terms_of_use_33:
+    'Your use of the Service is at your sole risk. The Service is provided on an \'AS IS\' and \'AS AVAILABLE\' basis. The Service is provided without warranties of any kind, whether express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, non-infringement, or course of performance. profi.ai, its subsidiaries, affiliates, and its licensors do not warrant that:',
+  com_terms_of_use_34:
+    'the Service will function uninterrupted, secure, or be available at any particular time or location;',
+  com_terms_of_use_35: 'any errors or defects will be corrected;',
+  com_terms_of_use_36: 'the Service is free of viruses or other harmful components;',
+  com_terms_of_use_37: 'the results of using the Service will meet your requirements.',
+  com_terms_of_use_38:
+    'In resolving conflicts, the user must refer to the latest published version of the Terms and Conditions regardless of the registration date.',
+  com_terms_of_use_39: '10. Governing Law',
+  com_terms_of_use_40:
+    'These Terms shall be governed and construed in accordance with the laws of the Russian Federation, without regard to its conflict of law provisions.',
+  com_terms_of_use_41:
+    'Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect.',
+  com_terms_of_use_42:
+    'These Terms constitute the entire agreement between us regarding our Service, and supersede and replace any prior agreements we might have had between us regarding the Service.',
+  com_terms_of_use_43: '11. Changes',
+  com_terms_of_use_44:
+    'We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 days notice prior to any new terms taking effect.',
+  com_terms_of_use_45:
+    'What constitutes a material change will be determined at our sole discretion. By continuing to access or use our Service after any revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please contact us by email: help.profi.ai@mail.ru.',
 };

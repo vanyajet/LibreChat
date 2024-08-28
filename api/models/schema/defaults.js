@@ -18,6 +18,10 @@ const conversationPreset = {
     type: String,
     required: false,
   },
+  description: {
+    type: String,
+    required: false,
+  },
   // for google only
   modelLabel: {
     type: String,
@@ -119,6 +123,10 @@ const agentOptions = {
   },
   // for azureOpenAI, openAI only
   chatGptLabel: {
+    type: String,
+    required: false,
+  },
+  description: {
     type: String,
     required: false,
   },

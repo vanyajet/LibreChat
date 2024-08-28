@@ -95,6 +95,17 @@ const settingsConfiguration: SettingsConfiguration = [
     optionType: 'conversation',
   },
   {
+    key: 'description',
+    label: 'com_ui_description',
+    labelCode: true,
+    type: 'string',
+    default: '',
+    component: 'input',
+    placeholder: 'com_endpoint_openai_custom_name_placeholder',
+    placeholderCode: true,
+    optionType: 'conversation',
+  },
+  {
     key: 'promptPrefix',
     label: 'com_endpoint_prompt_prefix',
     labelCode: true,

@@ -5,7 +5,7 @@ import { useGetEndpointsQuery, useGetStartupConfig } from 'librechat-data-provid
 import type { MouseEvent, FocusEvent, KeyboardEvent } from 'react';
 import { useUpdateConversationMutation } from '~/data-provider';
 import EndpointIcon from '~/components/Endpoints/EndpointIcon';
-import { useConversations, useNavigateToConvo } from '~/hooks';
+import { useConversations, useLocalize, useNavigateToConvo } from '~/hooks';
 import { NotificationSeverity } from '~/common';
 import { ArchiveIcon } from '~/components/svg';
 import { useToastContext } from '~/Providers';
@@ -22,6 +22,7 @@ type KeyEvent = KeyboardEvent<HTMLInputElement>;
 
 export default function Conversation({ conversation, retainView, toggleNav, isLatestConvo }) {
   const params = useParams();
+  const localize = useLocalize();
   const currentConvoId = useMemo(() => params.conversationId, [params.conversationId]);
   const updateConvoMutation = useUpdateConversationMutation(currentConvoId ?? '');
   const activeConvos = useRecoilValue(store.allConversationsSelector);
@@ -127,7 +128,7 @@ export default function Conversation({ conversation, retainView, toggleNav, isLa
           setIsPopoverActive={setIsPopoverActive}
         >
           {/* more dropdown button */}
-          <DropDownMenu>
+          <DropDownMenu tooltip={localize('com_ui_more_options')}>
             {startupConfig && startupConfig.sharedLinksEnabled && (
               <ShareButton
                 conversationId={conversationId}

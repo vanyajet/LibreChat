@@ -425,6 +425,30 @@ class BaseClient {
     return { payload, tokenCountMap, promptTokens, messages: orderedWithInstructions };
   }
 
+  countPreviousTokens(payload) {
+    let promptTokens = 0;
+    const messagesWithTokens = payload.map((message) => {
+      const parts = message.parts.map((part) => {
+        if (part.text) {
+          const tokenCount = this.getTokenCount(part.text);
+          console.log(part.text, tokenCount);
+          promptTokens += tokenCount;
+          return {
+            ...part,
+            tokenCount,
+          };
+        }
+        return part;
+      });
+      return {
+        ...message,
+        parts,
+      };
+    });
+    console.log('messagesWithTokens', messagesWithTokens, promptTokens);
+    return promptTokens;
+  }
+
   async sendMessage(message, opts = {}) {
     const { user, head, isEdited, conversationId, responseMessageId, saveOptions, userMessage } =
       await this.handleStartMethods(message, opts);
@@ -474,6 +498,10 @@ class BaseClient {
       this.getBuildMessagesOptions(opts),
       opts,
     );
+
+    if (!promptTokens) {
+      promptTokens = this.countPreviousTokens(payload);
+    }
 
     if (tokenCountMap) {
       logger.debug('[BaseClient] tokenCountMap', tokenCountMap);

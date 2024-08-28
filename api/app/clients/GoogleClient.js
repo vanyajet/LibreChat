@@ -371,26 +371,6 @@ class GoogleClient extends BaseClient {
     promises.push(this.buildAugmentedPrompt(messages));
     const [formattedMessages] = await Promise.all(promises);
 
-    let promptTokens = 0;
-    const messagesWithTokens = formattedMessages.map((message) => {
-      const parts = message.parts.map((part) => {
-        if (part.text) {
-          const tokenCount = this.getTokenCount(part.text);
-          console.log(part.text, tokenCount);
-          promptTokens += tokenCount;
-          return {
-            ...part,
-            tokenCount,
-          };
-        }
-        return part;
-      });
-      return {
-        ...message,
-        parts,
-      };
-    });
-    console.log('messagesWithTokens', messagesWithTokens, promptTokens);
     return { prompt: formattedMessages };
   }
 

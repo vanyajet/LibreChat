@@ -21,6 +21,7 @@ export const getPresetTitle = (preset: TPreset, mention?: boolean) => {
     model,
     tools,
     promptPrefix,
+    description,
     chatGptLabel,
     modelLabel,
     jailbreak,
@@ -55,6 +56,8 @@ export const getPresetTitle = (preset: TPreset, mention?: boolean) => {
 
   if (mention) {
     return `${modelInfo}${label ? ` | ${label}` : ''}${promptPrefix ? ` | ${promptPrefix}` : ''}${
+      description ? ` | ${description}` : ''
+    }${
       tools
         ? ` | ${tools
           .map((tool: TPlugin | string) => {

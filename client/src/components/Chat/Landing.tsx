@@ -1,23 +1,52 @@
-import { EModelEndpoint, isAssistantsEndpoint } from 'librechat-data-provider';
+import { EModelEndpoint, isAssistantsEndpoint, isPluginsEndpoint } from 'librechat-data-provider';
 import { useGetEndpointsQuery, useGetStartupConfig } from 'librechat-data-provider/react-query';
-import type { ReactNode } from 'react';
+import { useCallback, useEffect, useState, type ReactNode } from 'react';
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '~/components/ui';
 import { useChatContext, useAssistantsMapContext } from '~/Providers';
 import ConvoIcon from '~/components/Endpoints/ConvoIcon';
 import { BirthdayIcon } from '~/components/svg';
 import { getIconEndpoint, cn } from '~/utils';
-import { useLocalize } from '~/hooks';
+import { useAuthContext, useLocalize, usePluginDialogHelpers } from '~/hooks';
+import { useAvailablePluginsQuery } from 'librechat-data-provider/react-query';
+import { usePluginInstall } from '~/hooks';
+import { TPlugin, TPluginAction, TError } from 'librechat-data-provider';
+import { useSetIndexOptions } from '~/hooks';
+import PluginLandingItem from '../Plugins/Store/PluginLandingItem';
 
 export default function Landing({ Header }: { Header?: ReactNode }) {
-  const { conversation } = useChatContext();
+  const { preset, conversation, index, setPreset } = useChatContext();
   const assistantMap = useAssistantsMapContext();
+  const { user } = useAuthContext();
   const { data: startupConfig } = useGetStartupConfig();
   const { data: endpointsConfig } = useGetEndpointsQuery();
+  const { data: availablePlugins } = useAvailablePluginsQuery();
+
+  const [userPlugins, setUserPlugins] = useState<string[]>([]);
 
   const localize = useLocalize();
 
   let { endpoint = '' } = conversation ?? {};
   const { assistant_id = null } = conversation ?? {};
+
+  const iconURL = conversation?.iconURL;
+  endpoint = getIconEndpoint({ endpointsConfig, iconURL, endpoint });
+
+  const isAssistant = isAssistantsEndpoint(endpoint);
+  const isPlugins = isPluginsEndpoint(endpoint);
+  const isPreset = !!conversation?.promptPrefix;
+  const presetName = conversation?.chatGptLabel;
+  const presetDesc = conversation?.description;
+  const assistant = isAssistant && assistantMap?.[endpoint]?.[assistant_id ?? ''];
+  const assistantName = (assistant && assistant?.name) || '';
+  const assistantDesc = (assistant && assistant?.description) || '';
+  const avatar = (assistant && (assistant?.metadata?.avatar as string)) || '';
+
+  console.log('presetino', conversation);
+  console.log('isPreset', isPreset);
+  console.log('presetName', presetName);
+  console.log('presetDesc', presetDesc);
+
+  const { setError, setErrorMessage } = usePluginDialogHelpers();
 
   if (
     endpoint === EModelEndpoint.chatGPTBrowser ||
@@ -27,63 +56,132 @@ export default function Landing({ Header }: { Header?: ReactNode }) {
     endpoint = EModelEndpoint.openAI;
   }
 
-  const iconURL = conversation?.iconURL;
-  endpoint = getIconEndpoint({ endpointsConfig, iconURL, endpoint });
-
-  const isAssistant = isAssistantsEndpoint(endpoint);
-  const assistant = isAssistant && assistantMap?.[endpoint]?.[assistant_id ?? ''];
-  const assistantName = (assistant && assistant?.name) || '';
-  const assistantDesc = (assistant && assistant?.description) || '';
-  const avatar = (assistant && (assistant?.metadata?.avatar as string)) || '';
-
   const containerClassName =
     'shadow-stroke relative flex h-full items-center justify-center rounded-full bg-white text-black';
 
+  const handleInstallError = useCallback(
+    (error: TError) => {
+      setError(true);
+      if (error.response?.data?.message) {
+        setErrorMessage(error.response?.data?.message);
+      }
+      setTimeout(() => {
+        setError(false);
+        setErrorMessage('');
+      }, 5000);
+    },
+    [setError, setErrorMessage],
+  );
+
+  const { installPlugin, uninstallPlugin } = usePluginInstall({
+    onInstallError: handleInstallError,
+    onUninstallError: handleInstallError,
+    onUninstallSuccess: (_data, variables) => {
+      setTools(variables.pluginKey, true);
+    },
+  });
+
+  const { setTools } = useSetIndexOptions();
+
+  const handleInstall = (pluginAction: TPluginAction, plugin?: TPlugin) => {
+    if (!plugin) {
+      return;
+    }
+    installPlugin(pluginAction, plugin);
+  };
+
+  const onPluginInstall = (pluginKey: string) => {
+    const plugin = availablePlugins?.find((p) => p.pluginKey === pluginKey);
+    if (!plugin) {
+      return;
+    }
+    handleInstall({ pluginKey, action: 'install', auth: null }, plugin);
+    setTools(pluginKey, true);
+  };
+
+  useEffect(() => {
+    if (user && user.plugins) {
+      setUserPlugins(user.plugins);
+    }
+  }, [user]);
+
   return (
-    <TooltipProvider delayDuration={50}>
+    <TooltipProvider delayDuration={30}>
       <Tooltip>
         <div className="relative h-full">
           <div className="absolute left-0 right-0">{Header && Header}</div>
           <div className="flex h-full flex-col items-center justify-center">
-            <div className={cn('relative h-12 w-12', assistantName && avatar ? 'mb-0' : 'mb-3')}>
-              <ConvoIcon
-                conversation={conversation}
-                assistantMap={assistantMap}
-                endpointsConfig={endpointsConfig}
-                containerClassName={containerClassName}
-                context="landing"
-                className="h-2/3 w-2/3"
-                size={41}
-              />
-              {!!startupConfig?.showBirthdayIcon && (
-                <div>
-                  <TooltipTrigger>
-                    <BirthdayIcon className="absolute bottom-8 right-2.5" />
-                  </TooltipTrigger>
-                  <TooltipContent side="top" sideOffset={110} className="">
-                    {localize('com_ui_happy_birthday')}
-                  </TooltipContent>
-                </div>
-              )}
-            </div>
-            {assistantName ? (
-              <div className="flex flex-col items-center gap-0 p-2">
-                <div className="text-center text-2xl font-medium dark:text-white">
-                  {assistantName}
-                </div>
-                <div className="text-token-text-secondary max-w-md text-center text-xl font-normal ">
-                  {assistantDesc ? assistantDesc : localize('com_nav_welcome_message')}
-                </div>
-                {/* <div className="mt-1 flex items-center gap-1 text-token-text-tertiary">
-              <div className="text-sm text-token-text-tertiary">By Daniel Avila</div>
-            </div> */}
+            {isPlugins ? (
+              <div className="mx-8 grid grid-cols-1 gap-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+                {availablePlugins?.map((plugin, index) => {
+                  if (index > 4) {
+                    return null;
+                  }
+                  return (
+                    <PluginLandingItem
+                      key={index}
+                      plugin={plugin}
+                      isInstalled={userPlugins.includes(plugin.pluginKey)}
+                      onInstall={() => onPluginInstall(plugin.pluginKey)}
+                      onUninstall={() => uninstallPlugin(plugin.pluginKey)}
+                    />
+                  );
+                })}
               </div>
             ) : (
-              <div className="mb-5 max-w-[75vh] px-12 text-center text-lg font-medium dark:text-white md:px-0 md:text-2xl">
-                {isAssistant
-                  ? conversation?.greeting ?? localize('com_nav_welcome_assistant')
-                  : conversation?.greeting ?? localize('com_nav_welcome_message')}
-              </div>
+              <>
+                <div
+                  className={cn('relative h-12 w-12', assistantName && avatar ? 'mb-0' : 'mb-3')}
+                >
+                  <ConvoIcon
+                    conversation={conversation}
+                    assistantMap={assistantMap}
+                    endpointsConfig={endpointsConfig}
+                    containerClassName={containerClassName}
+                    context="landing"
+                    className="h-2/3 w-2/3"
+                    size={41}
+                  />
+                  {!!startupConfig?.showBirthdayIcon && (
+                    <div>
+                      <TooltipTrigger>
+                        <BirthdayIcon className="absolute bottom-8 right-2.5" />
+                      </TooltipTrigger>
+                      <TooltipContent side="top" sideOffset={110} className="">
+                        {localize('com_ui_happy_birthday')}
+                      </TooltipContent>
+                    </div>
+                  )}
+                </div>
+                {presetName && (
+                  <div className="flex flex-col items-center gap-0 p-2">
+                    <div className="text-center text-2xl font-medium dark:text-white">
+                      {presetName}
+                    </div>
+                    <div className="text-token-text-secondary max-w-md text-center text-xl font-normal ">
+                      {presetDesc && presetDesc}
+                    </div>
+                  </div>
+                )}
+                {assistantName ? (
+                  <div className="flex flex-col items-center gap-0 p-2">
+                    <div className="text-center text-2xl font-medium dark:text-white">
+                      {assistantName}
+                    </div>
+                    <div className="text-token-text-secondary max-w-md text-center text-xl font-normal ">
+                      {assistantDesc ? assistantDesc : localize('com_nav_welcome_message')}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="mb-5 max-w-[75vh] px-12 text-center text-lg font-medium dark:text-white md:px-0 md:text-2xl">
+                    {isPreset
+                      ? null
+                      : isAssistant
+                        ? conversation?.greeting ?? localize('com_nav_welcome_assistant')
+                        : conversation?.greeting ?? localize('com_nav_welcome_message')}
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>

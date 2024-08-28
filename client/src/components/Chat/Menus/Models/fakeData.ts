@@ -18,6 +18,7 @@ export const data: TModelSpec[] = [
       model: 'command-r',
       presence_penalty: 0,
       promptPrefix: null,
+      description: null,
       resendFiles: false,
       temperature: 0.8,
       top_p: 0.5,

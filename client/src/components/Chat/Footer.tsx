@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import TagManager from 'react-gtm-module';
 import { Constants } from 'librechat-data-provider';
 import { useGetStartupConfig } from 'librechat-data-provider/react-query';
 import { useLocalize } from '~/hooks';
+import PrivacyPolicy from './PrivacyPolicy';
+import TermsOfUse from './TermsOfUse';
 
 export default function Footer({ className }: { className?: string }) {
   const { data: config } = useGetStartupConfig();
   const localize = useLocalize();
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
+  const [showTermsOfUse, setShowTermsOfUse] = useState(false);
 
   const privacyPolicy = config?.interface?.privacyPolicy;
   const termsOfService = config?.interface?.termsOfService;
@@ -15,18 +19,31 @@ export default function Footer({ className }: { className?: string }) {
   const privacyPolicyRender = privacyPolicy?.externalUrl && (
     <a
       className=" text-gray-600 underline dark:text-gray-300"
-      href={privacyPolicy.externalUrl}
+      onClick={() => setShowPrivacyPolicy(true)}
+      // href={privacyPolicy.externalUrl}
       target={privacyPolicy.openNewTab ? '_blank' : undefined}
       rel="noreferrer"
     >
       {localize('com_ui_privacy_policy')}
     </a>
   );
+  // const privacyPolicyRender = privacyPolicy?.externalUrl && (
+  //   <a
+  //     className=" text-gray-600 underline dark:text-gray-300"
+
+  //     href={privacyPolicy.externalUrl}
+  //     target={privacyPolicy.openNewTab ? '_blank' : undefined}
+  //     rel="noreferrer"
+  //   >
+  //     {localize('com_ui_privacy_policy')}
+  //   </a>
+  // );
 
   const termsOfServiceRender = termsOfService?.externalUrl && (
     <a
       className=" text-gray-600 underline dark:text-gray-300"
-      href={termsOfService.externalUrl}
+      onClick={() => setShowTermsOfUse(true)}
+      // href={termsOfService.externalUrl}
       target={termsOfService.openNewTab ? '_blank' : undefined}
       rel="noreferrer"
     >
@@ -71,6 +88,10 @@ export default function Footer({ className }: { className?: string }) {
       >
         {text.trim()}
       </ReactMarkdown>
+      {showPrivacyPolicy && (
+        <PrivacyPolicy open={showPrivacyPolicy} onOpenChange={setShowPrivacyPolicy} />
+      )}
+      {showTermsOfUse && <TermsOfUse open={showTermsOfUse} onOpenChange={setShowTermsOfUse} />}
     </React.Fragment>
   ));
 

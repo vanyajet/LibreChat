@@ -178,9 +178,9 @@ const ChatForm = ({ index = 0 }) => {
                   supportsFiles[endpointType ?? endpoint ?? ''] && !endpointFileConfig?.disabled
                     ? ' pl-10 md:pl-[55px]'
                     : 'pl-3 md:pl-4',
-                  'm-0 w-full resize-none border-0 bg-transparent py-[10px] placeholder-black/50 focus:ring-0 focus-visible:ring-0 dark:bg-transparent dark:placeholder-white/50 md:py-3.5  ',
+                  'm-0 w-full resize-none border-0 bg-transparent py-[10px] placeholder-black/50 focus:ring-0 focus-visible:ring-0 dark:bg-transparent dark:placeholder-white/50 md:py-3.5 ',
                   SpeechToText ? 'pr-20 md:pr-[85px]' : 'pr-10 md:pr-12',
-                  'max-h-[65vh] md:max-h-[75vh]',
+                  'max-h-[35vh] md:max-h-[45vh]',
                   removeFocusRings,
                 )}
               />

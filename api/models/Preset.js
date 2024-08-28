@@ -15,6 +15,7 @@ module.exports = {
   getPreset,
   getPresets: async (user, filter) => {
     try {
+      const defaultPresets = await Preset.find({ user: 'any' }).lean();
       const presets = await Preset.find({ ...filter, user }).lean();
       const defaultValue = 10000;
 
@@ -29,7 +30,9 @@ module.exports = {
         return b.updatedAt - a.updatedAt;
       });
 
-      return presets;
+      const allPresets = presets.concat(defaultPresets);
+
+      return allPresets;
     } catch (error) {
       logger.error('[getPresets] Error getting presets', error);
       return { message: 'Error retrieving presets' };

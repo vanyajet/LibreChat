@@ -1,6 +1,7 @@
 const buildOptions = (endpoint, parsedBody) => {
   const {
     chatGptLabel,
+    description,
     promptPrefix,
     maxContextTokens,
     resendFiles,
@@ -13,6 +14,7 @@ const buildOptions = (endpoint, parsedBody) => {
   const endpointOption = {
     endpoint,
     chatGptLabel,
+    description,
     promptPrefix,
     resendFiles,
     imageDetail,

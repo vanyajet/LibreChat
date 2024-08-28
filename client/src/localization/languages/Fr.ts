@@ -719,6 +719,50 @@ export default {
   com_auth_email_verification_redirecting: 'Redirection dans {0} secondes...',
   com_auth_reset_password_if_email_exists:
     'Si un compte avec ce courriel existe, un courriel avec des instructions de réinitialisation de mot de passe a été envoyé. Assurez-vous de vérifier votre dossier de courrier indésirable.',
+  com_privacy_policy_title: 'Política de Privacidad',
+  com_privacy_policy_header: 'Política de Privacidad de Profi.ai',
+  com_privacy_policy_intro:
+    'En Profi.ai, entendemos la importancia de la privacidad y la seguridad de los datos para nuestros usuarios. Esta Política de Privacidad explica qué información recopilamos, cómo la usamos y las medidas que tomamos para protegerla. Al usar nuestra aplicación, usted acepta los términos de esta Política de Privacidad.',
+  com_privacy_policy_h_1: '1. Recopilación de información',
+  com_privacy_policy_p_1: 'Podemos recopilar los siguientes tipos de información:',
+  com_privacy_policy_li_1_1:
+    'Datos personales: nombre, dirección de correo electrónico, información de contacto.',
+  com_privacy_policy_li_1_2:
+    'Datos de uso: información sobre cómo usa nuestra aplicación, incluida la duración de las sesiones, las consultas ingresadas y las respuestas.',
+  com_privacy_policy_li_1_3:
+    'Datos de dispositivos y registros: información sobre su dispositivo, dirección IP, tipo de navegador y sistema operativo.',
+  com_privacy_policy_h_2: '2. Uso de la información',
+  com_privacy_policy_p_2: 'Los datos recopilados se utilizan para:',
+  com_privacy_policy_li_2_1: 'Proporcionar y mejorar la aplicación.',
+  com_privacy_policy_li_2_2: 'Personalizar su experiencia con la aplicación.',
+  com_privacy_policy_li_2_3: 'Garantizar la seguridad y prevenir el fraude.',
+  com_privacy_policy_li_2_4:
+    'Análisis e investigación para mejorar nuestros productos y servicios.',
+  com_privacy_policy_h_3: '3. Compartir información',
+  com_privacy_policy_p_3:
+    'No compartimos su información personal con terceros, excepto en los siguientes casos:',
+  com_privacy_policy_li_3_1: 'Con su consentimiento.',
+  com_privacy_policy_li_3_2:
+    'Para cumplir con la ley, procedimientos legales o proteger nuestros derechos y propiedades.',
+  com_privacy_policy_li_3_3:
+    'En colaboración con servicios asociados que nos ayudan a proporcionar nuestros servicios (por ejemplo, proveedores de alojamiento).',
+  com_privacy_policy_h_4: '4. Protección de datos',
+  com_privacy_policy_p_4:
+    'Tomamos medidas razonables para proteger sus datos contra acceso no autorizado, modificación, divulgación o destrucción. Sin embargo, ningún método de transmisión o almacenamiento es completamente seguro.',
+  com_privacy_policy_h_5: '5. Sus derechos',
+  com_privacy_policy_p_5:
+    'Dependiendo de su ubicación, puede tener derechos sobre sus datos, incluyendo el derecho a acceder, corregir, eliminar y restringir el procesamiento de sus datos. Para ejercer estos derechos, por favor contáctenos en los contactos proporcionados a continuación.',
+  com_privacy_policy_h_6: '6. Cookies y tecnologías similares',
+  com_privacy_policy_p_6:
+    'Usamos cookies y tecnologías similares para mejorar la funcionalidad de nuestra aplicación y analizar el uso. Puede configurar su navegador para rechazar las cookies, pero esto puede afectar la funcionalidad de ciertas características de la aplicación.',
+  com_privacy_policy_h_7: '7. Cambios a la Política de Privacidad',
+  com_privacy_policy_p_7:
+    'Podemos actualizar periódicamente esta Política de Privacidad. Todos los cambios serán publicados en esta página con la fecha de entrada en vigor. Le recomendamos revisar regularmente esta página para estar informado sobre cualquier actualización.',
+  com_privacy_policy_h_8: '8. Contáctenos',
+  com_privacy_policy_p_8:
+    'Si tiene alguna pregunta o comentario sobre esta Política de Privacidad, por favor contáctenos:',
+  com_privacy_policy_li_8_1: 'Email: [insertar su correo electrónico]',
+  com_privacy_policy_li_8_2: 'Dirección: [insertar su dirección]',
 };
 
 export const comparisons = {

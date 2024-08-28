@@ -503,6 +503,7 @@ export const generateOpenAISchema = (customOpenAI: OpenAISettings) => {
     .pick({
       model: true,
       chatGptLabel: true,
+      description: true,
       promptPrefix: true,
       temperature: true,
       top_p: true,
@@ -516,6 +517,7 @@ export const generateOpenAISchema = (customOpenAI: OpenAISettings) => {
       ...obj,
       model: obj.model ?? defaults.model.default,
       chatGptLabel: obj.chatGptLabel ?? null,
+      description: obj.description ?? null,
       promptPrefix: obj.promptPrefix ?? null,
       temperature: obj.temperature ?? defaults.temperature.default,
       top_p: obj.top_p ?? defaults.top_p.default,
@@ -529,6 +531,7 @@ export const generateOpenAISchema = (customOpenAI: OpenAISettings) => {
     .catch(() => ({
       model: defaults.model.default,
       chatGptLabel: null,
+      description: null,
       promptPrefix: null,
       temperature: defaults.temperature.default,
       top_p: defaults.top_p.default,

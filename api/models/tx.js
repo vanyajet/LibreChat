@@ -12,7 +12,7 @@ const tokenValues = {
   '4k': { prompt: 0.0008, completion: 0.001 },
   '16k': { prompt: 0.0015, completion: 0.002 },
   'gpt-3.5-turbo-1106': { prompt: 0.0005, completion: 0.001 },
-  'gpt-4o': { prompt: 0.0075, completion: 0.027 }, // 0.75 / 2.7 rub per 1000 tokens
+  'gpt-4o': { prompt: 0.0015, completion: 0.0027 }, // 1.5 / 2.7 rub per 1000 tokens
   'gpt-4-1106': { prompt: 0.005, completion: 0.015 },
   'gpt-3.5-turbo-0125': { prompt: 0.00025, completion: 0.0008 },
   'claude-3-opus': { prompt: 0.0008, completion: 0.004 },

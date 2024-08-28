@@ -27,12 +27,19 @@ export enum EModelEndpoint {
 }
 
 export type AssistantsEndpoint = EModelEndpoint.assistants | EModelEndpoint.azureAssistants;
+export type PluginsEndpoint = EModelEndpoint.gptPlugins;
 
 export const isAssistantsEndpoint = (endpoint?: AssistantsEndpoint | null | string): boolean => {
   if (!endpoint) {
     return false;
   }
   return endpoint.toLowerCase().endsWith(EModelEndpoint.assistants);
+};
+export const isPluginsEndpoint = (endpoint?: PluginsEndpoint | null | string): boolean => {
+  if (!endpoint) {
+    return false;
+  }
+  return endpoint.endsWith(EModelEndpoint.gptPlugins);
 };
 
 export enum ImageDetail {
@@ -314,6 +321,7 @@ export const tConversationSchema = z.object({
   chatGptLabel: z.string().nullable().optional(),
   userLabel: z.string().optional(),
   model: z.string().nullable().optional(),
+  description: z.string().nullable().optional(),
   promptPrefix: z.string().nullable().optional(),
   temperature: z.number().optional(),
   topP: z.number().optional(),
@@ -420,6 +428,7 @@ export const openAISchema = tConversationSchema
     model: true,
     modelLabel: true,
     chatGptLabel: true,
+    description: true,
     promptPrefix: true,
     temperature: true,
     top_p: true,
@@ -439,6 +448,7 @@ export const openAISchema = tConversationSchema
       ...obj,
       model: obj.model ?? openAISettings.model.default,
       chatGptLabel: obj.chatGptLabel ?? obj.modelLabel ?? null,
+      description: obj.description ?? null,
       promptPrefix: obj.promptPrefix ?? null,
       temperature: obj.temperature ?? openAISettings.temperature.default,
       top_p: obj.top_p ?? openAISettings.top_p.default,
@@ -464,6 +474,7 @@ export const openAISchema = tConversationSchema
   .catch(() => ({
     model: openAISettings.model.default,
     chatGptLabel: null,
+    description: null,
     promptPrefix: null,
     temperature: openAISettings.temperature.default,
     top_p: openAISettings.top_p.default,
@@ -623,6 +634,7 @@ export const gptPluginsSchema = tConversationSchema
     model: true,
     modelLabel: true,
     chatGptLabel: true,
+    description: true,
     promptPrefix: true,
     temperature: true,
     top_p: true,
@@ -640,6 +652,7 @@ export const gptPluginsSchema = tConversationSchema
       ...obj,
       model: obj.model ?? 'gpt-3.5-turbo',
       chatGptLabel: obj.chatGptLabel ?? obj.modelLabel ?? null,
+      description: obj.description ?? null,
       promptPrefix: obj.promptPrefix ?? null,
       temperature: obj.temperature ?? 0.8,
       top_p: obj.top_p ?? 1,
@@ -667,6 +680,7 @@ export const gptPluginsSchema = tConversationSchema
   .catch(() => ({
     model: 'gpt-3.5-turbo',
     chatGptLabel: null,
+    description: null,
     promptPrefix: null,
     temperature: 0.8,
     top_p: 1,
@@ -745,6 +759,7 @@ export const compactOpenAISchema = tConversationSchema
   .pick({
     model: true,
     chatGptLabel: true,
+    description: true,
     promptPrefix: true,
     temperature: true,
     top_p: true,
@@ -869,6 +884,7 @@ export const compactPluginsSchema = tConversationSchema
   .pick({
     model: true,
     chatGptLabel: true,
+    description: true,
     promptPrefix: true,
     temperature: true,
     top_p: true,
@@ -885,6 +901,9 @@ export const compactPluginsSchema = tConversationSchema
     const newObj: Partial<TConversation> = { ...obj };
     if (newObj.chatGptLabel === null) {
       delete newObj.chatGptLabel;
+    }
+    if (newObj.description === null) {
+      delete newObj.description;
     }
     if (newObj.promptPrefix === null) {
       delete newObj.promptPrefix;

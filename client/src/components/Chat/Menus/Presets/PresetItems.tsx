@@ -7,13 +7,22 @@ import type { TPreset } from 'librechat-data-provider';
 import { getPresetTitle, getEndpointField, getIconKey } from '~/utils';
 import FileUpload from '~/components/Chat/Input/Files/FileUpload';
 import { PinIcon, EditIcon, TrashIcon } from '~/components/svg';
-import { Dialog, DialogTrigger, Label } from '~/components/ui';
+import {
+  Dialog,
+  DialogTrigger,
+  Label,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '~/components/ui';
 import DialogTemplate from '~/components/ui/DialogTemplate';
 import { MenuSeparator, MenuItem } from '../UI';
 import { icons } from '../Endpoints/Icons';
 import { useLocalize } from '~/hooks';
 import { cn } from '~/utils';
 import store from '~/store';
+import { InfoIcon } from 'lucide-react';
 
 const PresetItems: FC<{
   presets: TPreset[];
@@ -119,7 +128,8 @@ const PresetItems: FC<{
             }
 
             const iconKey = getIconKey({ endpoint: preset.endpoint, endpointsConfig });
-            const Icon = icons[iconKey];
+
+            const Icon = icons[iconKey] ? icons[iconKey] : icons['assistants'];
 
             return (
               <Close asChild key={`preset-${preset.presetId}`}>
@@ -143,6 +153,25 @@ const PresetItems: FC<{
                       data-testid={`preset-item-${preset}`}
                     >
                       <div className="flex h-full items-center justify-end gap-1">
+                        <TooltipProvider delayDuration={250}>
+                          <Tooltip>
+                            <button
+                              className="h-50% m-0 rounded-md p-0 text-gray-400 hover:text-gray-700 dark:bg-gray-600 dark:text-gray-400 dark:hover:text-gray-200 sm:invisible sm:group-hover:visible"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                console.log(e);
+                              }}
+                            >
+                              <TooltipTrigger asChild>
+                                <InfoIcon height={16} />
+                              </TooltipTrigger>
+                              <TooltipContent side="bottom" sideOffset={0}>
+                                {preset.description}
+                              </TooltipContent>
+                            </button>
+                          </Tooltip>
+                        </TooltipProvider>
                         <button
                           className={cn(
                             'm-0 h-full rounded-md bg-transparent p-2 text-gray-400 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200',

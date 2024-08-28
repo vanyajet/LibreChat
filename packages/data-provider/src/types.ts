@@ -28,6 +28,7 @@ export type TEndpointOption = {
   maxContextTokens?: number;
   imageDetail?: ImageDetail;
   model?: string | null;
+  description?: string;
   promptPrefix?: string;
   temperature?: number;
   chatGptLabel?: string | null;

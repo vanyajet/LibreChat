@@ -1,6 +1,7 @@
 const buildOptions = (endpoint, parsedBody) => {
   const {
     chatGptLabel,
+    description,
     promptPrefix,
     agentOptions,
     tools,
@@ -17,6 +18,7 @@ const buildOptions = (endpoint, parsedBody) => {
         .map((tool) => tool?.pluginKey ?? tool)
         .filter((toolName) => typeof toolName === 'string') ?? [],
     chatGptLabel,
+    description,
     promptPrefix,
     agentOptions,
     iconURL,
