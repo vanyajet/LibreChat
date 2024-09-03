@@ -223,26 +223,26 @@ export default {
   com_endpoint_import: 'Импорт',
   com_endpoint_set_custom_name:
     'Задайте кастомное имя на случай, если вы сможете найти эту предустановку :)',
-  com_endpoint_preset_delete_confirm: 'Вы уверены, что хотите удалить этот пресет?',
-  com_endpoint_preset_clear_all_confirm: 'Вы уверены, что хотите удалить все ваши пресеты?',
-  com_endpoint_preset_import: 'Пресет Импортирован!',
+  com_endpoint_preset_delete_confirm: 'Вы уверены, что хотите удалить этого ассистента?',
+  com_endpoint_preset_clear_all_confirm: 'Вы уверены, что хотите удалить всех ваших ассистентов?',
+  com_endpoint_preset_import: 'Ассистент Импортирован!',
   com_endpoint_preset_import_error:
-    'Произошла ошибка при импорте вашего пресета. Пожалуйста, попробуйте еще раз.',
+    'Произошла ошибка при импорте вашего ассистента. Пожалуйста, попробуйте еще раз.',
   com_endpoint_preset_save_error:
-    'Произошла ошибка при сохранении вашего пресета. Пожалуйста, попробуйте еще раз.',
+    'Произошла ошибка при сохранении вашего ассистента. Пожалуйста, попробуйте еще раз.',
   com_endpoint_preset_delete_error:
-    'Произошла ошибка при удалении вашего пресета. Пожалуйста, попробуйте еще раз.',
-  com_endpoint_preset_default_removed: 'больше не пресет по умолчанию.',
+    'Произошла ошибка при удалении вашего ассистента. Пожалуйста, попробуйте еще раз.',
+  com_endpoint_preset_default_removed: 'больше не ассистент по умолчанию.',
   com_endpoint_preset_default_item: 'По умолчанию:',
-  com_endpoint_preset_default_none: 'Активных пресетов по умолчанию нет.',
-  com_endpoint_preset_title: 'Пресет',
+  com_endpoint_preset_default_none: 'Активных ассистентов по умолчанию нет.',
+  com_endpoint_preset_title: 'Ассистент',
   com_endpoint_preset_saved: 'Сохранено!',
-  com_endpoint_preset_default: 'теперь пресет По умолчанию.',
-  com_endpoint_preset: 'пресет',
-  com_endpoint_presets: 'пресеты',
-  com_endpoint_preset_selected: 'Пресет Активирован!',
+  com_endpoint_preset_default: 'теперь ассистент По умолчанию.',
+  com_endpoint_preset: 'ассистента',
+  com_endpoint_presets: 'ассистенты',
+  com_endpoint_preset_selected: 'Ассистент Активирован!',
   com_endpoint_preset_selected_title: 'Активирован!',
-  com_endpoint_preset_name: 'Имя пресета',
+  com_endpoint_preset_name: 'Имя ассистента',
   com_endpoint_new_topic: 'Новая тема',
   com_endpoint: 'Эндпоинт',
   com_endpoint_hide: 'Скрыть',
@@ -253,15 +253,15 @@ export default {
   com_endpoint_show_what_settings: 'Показать настройки {0}',
   com_endpoint_save: 'Сохранить',
   com_endpoint_export: 'Экспорт',
-  com_endpoint_save_as_preset: 'Сохранить как Пресет',
+  com_endpoint_save_as_preset: 'Сохранить как Ассистента',
   com_endpoint_presets_clear_warning:
-    'Вы уверены, что хотите удалить все пресеты? Это действие необратимо и восстановление невозможно.',
+    'Вы уверены, что хотите удалить всех ассистентов? Это действие необратимо и восстановление невозможно.',
   com_endpoint_not_implemented: 'Не реализовано',
-  com_endpoint_no_presets: 'Пока нет пресетов, используйте кнопку настроек чтобы создать его',
+  com_endpoint_no_presets: 'Пока нет ассистентов, используйте кнопку настроек чтобы создать его',
   com_endpoint_not_available: 'Нет доступных эндпоинтов',
   com_endpoint_view_options: 'Просмотреть Настройки',
-  com_endpoint_save_convo_as_preset: 'Сохранить текущий разговор как Пресет',
-  com_endpoint_my_preset: 'Мой Пресет',
+  com_endpoint_save_convo_as_preset: 'Сохранить текущий разговор как Ассистента',
+  com_endpoint_my_preset: 'Мой Ассистента',
   com_endpoint_agent_model: 'Модель агента (Рекомендуется: GPT-3.5)',
   com_endpoint_completion_model: 'Модель завершения (Рекомендуется: GPT-4)',
   com_endpoint_func_hover: 'Включить использование плагинов как функции OpenAI',
@@ -1533,31 +1533,32 @@ export const comparisons = {
   },
   com_endpoint_preset_delete_confirm: {
     english: 'Are you sure you want to delete this preset?',
-    translated: 'Вы уверены, что хотите удалить этот пресет?',
+    translated: 'Вы уверены, что хотите удалить этого ассистента?',
   },
   com_endpoint_preset_clear_all_confirm: {
     english: 'Are you sure you want to delete all of your presets?',
-    translated: 'Вы уверены, что хотите удалить все ваши пресеты?',
+    translated: 'Вы уверены, что хотите удалить всех ваших ассистентов?',
   },
   com_endpoint_preset_import: {
     english: 'Preset Imported!',
-    translated: 'Пресет Импортирован!',
+    translated: 'Ассистент Импортирован!',
   },
   com_endpoint_preset_import_error: {
     english: 'There was an error importing your preset. Please try again.',
-    translated: 'Произошла ошибка при импорте вашего пресета. Пожалуйста, попробуйте еще раз.',
+    translated: 'Произошла ошибка при импорте вашего ассистента. Пожалуйста, попробуйте еще раз.',
   },
   com_endpoint_preset_save_error: {
     english: 'There was an error saving your preset. Please try again.',
-    translated: 'Произошла ошибка при сохранении вашего пресета. Пожалуйста, попробуйте еще раз.',
+    translated:
+      'Произошла ошибка при сохранении вашего ассистента. Пожалуйста, попробуйте еще раз.',
   },
   com_endpoint_preset_delete_error: {
     english: 'There was an error deleting your preset. Please try again.',
-    translated: 'Произошла ошибка при удалении вашего пресета. Пожалуйста, попробуйте еще раз.',
+    translated: 'Произошла ошибка при удалении вашего ассистента. Пожалуйста, попробуйте еще раз.',
   },
   com_endpoint_preset_default_removed: {
     english: 'is no longer the default preset.',
-    translated: 'больше не пресет по умолчанию.',
+    translated: 'больше не ассистент по умолчанию.',
   },
   com_endpoint_preset_default_item: {
     english: 'Default:',
@@ -1565,11 +1566,11 @@ export const comparisons = {
   },
   com_endpoint_preset_default_none: {
     english: 'No default preset active.',
-    translated: 'Активных пресетов по умолчанию нет.',
+    translated: 'Активных ассистентов по умолчанию нет.',
   },
   com_endpoint_preset_title: {
     english: 'Preset',
-    translated: 'Пресет',
+    translated: 'Ассистент',
   },
   com_endpoint_preset_saved: {
     english: 'Saved!',
@@ -1577,19 +1578,19 @@ export const comparisons = {
   },
   com_endpoint_preset_default: {
     english: 'is now the default preset.',
-    translated: 'теперь пресет По умолчанию.',
+    translated: 'теперь ассистент По умолчанию.',
   },
   com_endpoint_preset: {
     english: 'preset',
-    translated: 'пресет',
+    translated: 'ассистент',
   },
   com_endpoint_presets: {
     english: 'presets',
-    translated: 'пресеты',
+    translated: 'ассистенты',
   },
   com_endpoint_preset_selected: {
     english: 'Preset Active!',
-    translated: 'Пресет Активирован!',
+    translated: 'Ассистент Активирован!',
   },
   com_endpoint_preset_selected_title: {
     english: 'Active!',
@@ -1597,7 +1598,7 @@ export const comparisons = {
   },
   com_endpoint_preset_name: {
     english: 'Preset Name',
-    translated: 'Имя пресета',
+    translated: 'Имя ассистента',
   },
   com_endpoint_new_topic: {
     english: 'New Topic',
@@ -1637,12 +1638,12 @@ export const comparisons = {
   },
   com_endpoint_save_as_preset: {
     english: 'Save As Preset',
-    translated: 'Сохранить как Пресет',
+    translated: 'Сохранить как Ассистента',
   },
   com_endpoint_presets_clear_warning: {
     english: 'Are you sure you want to clear all presets? This is irreversible.',
     translated:
-      'Вы уверены, что хотите удалить все пресеты? Это действие необратимо и восстановление невозможно.',
+      'Вы уверены, что хотите удалить всех ассистентов? Это действие необратимо и восстановление невозможно.',
   },
   com_endpoint_not_implemented: {
     english: 'Not implemented',
@@ -1650,7 +1651,7 @@ export const comparisons = {
   },
   com_endpoint_no_presets: {
     english: 'No presets yet, use the settings button to create one',
-    translated: 'Пока нет пресетов, используйте кнопку настроек чтобы создать его',
+    translated: 'Пока нет ассистентов, используйте кнопку настроек чтобы создать его',
   },
   com_endpoint_not_available: {
     english: 'No endpoint available',
@@ -1662,11 +1663,11 @@ export const comparisons = {
   },
   com_endpoint_save_convo_as_preset: {
     english: 'Save Conversation as Preset',
-    translated: 'Сохранить текущий разговор как Пресет',
+    translated: 'Сохранить текущий разговор как Ассистент',
   },
   com_endpoint_my_preset: {
     english: 'My Preset',
-    translated: 'Мой Пресет',
+    translated: 'Мой Ассистент',
   },
   com_endpoint_agent_model: {
     english: 'Agent Model (Recommended: GPT-3.5)',

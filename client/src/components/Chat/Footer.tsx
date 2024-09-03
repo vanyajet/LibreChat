@@ -103,7 +103,7 @@ export default function Footer({ className }: { className?: string }) {
     <div
       className={
         className ||
-        'relative flex items-center justify-center gap-2 px-2 py-2 text-center text-xs text-gray-600 dark:text-gray-300 md:px-[60px]'
+        'relative flex items-center justify-center gap-2 px-2 py-2 text-center text-xs text-gray-600 dark:text-gray-300 md:px-[60px] xs:hidden'
       }
     >
       {footerElements.map((contentRender, index) => {

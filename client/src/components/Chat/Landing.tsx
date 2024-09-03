@@ -32,17 +32,19 @@ export default function Landing({ Header }: { Header?: ReactNode }) {
   endpoint = getIconEndpoint({ endpointsConfig, iconURL, endpoint });
 
   const isAssistant = isAssistantsEndpoint(endpoint);
-  const isPlugins = isPluginsEndpoint(endpoint);
+  // const isPlugins = isPluginsEndpoint(endpoint);
+  const isPlugins = false;
   const isPreset = !!conversation?.promptPrefix;
-  const presetName = conversation?.chatGptLabel;
+  const presetName = conversation?.chatGptLabel || conversation?.modelLabel;
   const presetDesc = conversation?.description;
   const assistant = isAssistant && assistantMap?.[endpoint]?.[assistant_id ?? ''];
   const assistantName = (assistant && assistant?.name) || '';
   const assistantDesc = (assistant && assistant?.description) || '';
   const avatar = (assistant && (assistant?.metadata?.avatar as string)) || '';
 
-  console.log('presetino', conversation);
+  console.log('conversationLOG', conversation);
   console.log('isPreset', isPreset);
+  console.log('preset', preset);
   console.log('presetName', presetName);
   console.log('presetDesc', presetDesc);
 
@@ -112,7 +114,7 @@ export default function Landing({ Header }: { Header?: ReactNode }) {
           <div className="absolute left-0 right-0">{Header && Header}</div>
           <div className="flex h-full flex-col items-center justify-center">
             {isPlugins ? (
-              <div className="mx-8 grid grid-cols-1 gap-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+              <div className="mx-8 grid h-1/2 grid-cols-1 gap-1 overflow-auto sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
                 {availablePlugins?.map((plugin, index) => {
                   if (index > 4) {
                     return null;
@@ -153,13 +155,13 @@ export default function Landing({ Header }: { Header?: ReactNode }) {
                     </div>
                   )}
                 </div>
-                {presetName && (
+                {isPreset && (
                   <div className="flex flex-col items-center gap-0 p-2">
                     <div className="text-center text-2xl font-medium dark:text-white">
                       {presetName}
                     </div>
                     <div className="text-token-text-secondary max-w-md text-center text-xl font-normal ">
-                      {presetDesc && presetDesc}
+                      {presetDesc ? presetDesc : localize('com_nav_welcome_message')}
                     </div>
                   </div>
                 )}

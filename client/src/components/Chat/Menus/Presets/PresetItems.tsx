@@ -51,7 +51,7 @@ const PresetItems: FC<{
         className="pointer-none group m-1.5 flex h-8 min-w-[170px] gap-2 rounded px-5 py-2.5 !pr-3 text-sm !opacity-100 focus:ring-0 radix-disabled:pointer-events-none radix-disabled:opacity-50  md:min-w-[240px]"
         tabIndex={-1}
       >
-        <div className="flex h-full grow items-center justify-end gap-2">
+        <div className="flex h-full grow items-center justify-between gap-2">
           <label
             htmlFor="default-preset"
             className="w-40 truncate rounded bg-transparent py-1 text-xs font-medium font-normal text-gray-600 transition-colors dark:bg-transparent dark:text-gray-300 sm:w-72"
@@ -60,8 +60,9 @@ const PresetItems: FC<{
               ? `${localize('com_endpoint_preset_default_item')} ${defaultPreset.title}`
               : localize('com_endpoint_preset_default_none')}
           </label>
+          {/* disable preset deletion */}
           <Dialog>
-            <DialogTrigger asChild>
+            {/* <DialogTrigger asChild>
               <label
                 htmlFor="file-upload"
                 className="mr-1 flex h-[32px] cursor-pointer items-center rounded bg-transparent px-2 py-1 text-xs font-medium font-normal text-gray-600 transition-colors hover:bg-gray-100 hover:text-red-700 dark:bg-transparent dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-green-500 dark:hover:text-red-700"
@@ -78,7 +79,7 @@ const PresetItems: FC<{
                 </svg>
                 {localize('com_ui_clear')} {localize('com_ui_all')}
               </label>
-            </DialogTrigger>
+            </DialogTrigger> */}
             <DialogTemplate
               showCloseButton={false}
               title={`${localize('com_ui_clear')} ${localize('com_endpoint_presets')}`}
@@ -156,15 +157,16 @@ const PresetItems: FC<{
                         <TooltipProvider delayDuration={250}>
                           <Tooltip>
                             <button
-                              className="h-50% m-0 rounded-md p-0 text-gray-400 hover:text-gray-700 dark:bg-gray-600 dark:text-gray-400 dark:hover:text-gray-200 sm:invisible sm:group-hover:visible"
+                              className="m-0 h-full rounded-md p-2 text-gray-400 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 sm:invisible sm:group-hover:visible"
                               onClick={(e) => {
                                 e.preventDefault();
                                 e.stopPropagation();
                                 console.log(e);
                               }}
+                              disabled
                             >
                               <TooltipTrigger asChild>
-                                <InfoIcon height={16} />
+                                <InfoIcon size={16} />
                               </TooltipTrigger>
                               <TooltipContent side="bottom" sideOffset={0}>
                                 {preset.description}
@@ -174,7 +176,7 @@ const PresetItems: FC<{
                         </TooltipProvider>
                         <button
                           className={cn(
-                            'm-0 h-full rounded-md bg-transparent p-2 text-gray-400 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200',
+                            'm-0 h-full rounded-md p-2 text-gray-400 hover:text-gray-700 dark:bg-gray-600 dark:text-gray-400 dark:hover:text-gray-200 sm:invisible sm:group-hover:visible',
                             defaultPreset?.presetId === preset.presetId
                               ? ''
                               : 'sm:invisible sm:group-hover:visible',

@@ -57,6 +57,8 @@ const buildDefaultConvo = ({
     },
   });
 
+  const prevConvo = conversation;
+
   const defaultConvo = {
     ...conversation,
     ...convo,
@@ -67,6 +69,14 @@ const buildDefaultConvo = ({
   // Ensures assistant_id is always defined
   if (isAssistantsEndpoint(endpoint) && !defaultConvo.assistant_id && convo.assistant_id) {
     defaultConvo.assistant_id = convo.assistant_id;
+  }
+
+  if (prevConvo.promptPrefix) {
+    defaultConvo.promptPrefix = prevConvo.promptPrefix;
+  }
+
+  if (defaultConvo.promptPrefix) {
+    defaultConvo.description = lastConversationSetup?.description ?? defaultConvo.description;
   }
 
   defaultConvo.tools = lastConversationSetup?.tools ?? lastSelectedTools ?? defaultConvo.tools;

@@ -837,6 +837,7 @@ export const compactAnthropicSchema = tConversationSchema
   .pick({
     model: true,
     modelLabel: true,
+    description: true,
     promptPrefix: true,
     temperature: true,
     maxOutputTokens: true,
