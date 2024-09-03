@@ -180,11 +180,11 @@ export default {
     'Top-k изменяет то, как модель выбирает токены для вывода. Top-k равное 1 означает, что выбирается наиболее вероятный токен из всего словаря модели (так называемое жадное декодирование), а Top-k равное 3 означает, что следующий токен выбирается из трех наиболее вероятных токенов (с использованием температуры).',
   com_endpoint_google_maxoutputtokens:
     ' 	Максимальное количество токенов, которые могут быть сгенерированы в ответе. Укажите меньшее значение для более коротких ответов и большее значение для более длинных ответов.',
-  com_endpoint_google_custom_name_placeholder: 'Задайте кастомное имя для Google',
+  com_endpoint_google_custom_name_placeholder: 'Задайте с для Google',
   com_endpoint_prompt_prefix_placeholder:
     'Задайте пользовательские инструкции или контекст. Игнорируется, если пусто.',
-  com_endpoint_custom_name: 'Кастомное имя',
-  com_endpoint_prompt_prefix: 'Префикс промта',
+  com_endpoint_custom_name: 'Примечание',
+  com_endpoint_prompt_prefix: 'Инструкции чату',
   com_endpoint_temperature: 'Температура',
   com_endpoint_default: 'по умолчанию',
   com_endpoint_top_p: 'Top P',
@@ -200,7 +200,7 @@ export default {
     'Число от -2.0 до 2.0. Положительные значения штрафуют новые токены на основе их частоты в тексте до сих пор, уменьшая вероятность модели повторить ту же строку дословно.',
   com_endpoint_openai_pres:
     'Число от -2.0 до 2.0. Положительные значения штрафуют новые токены на основе того, появляются ли они в тексте до сих пор, увеличивая вероятность модели говорить о новых темах.',
-  com_endpoint_openai_custom_name_placeholder: 'Задайте кастомное имя для ChatGPT',
+  com_endpoint_openai_custom_name_placeholder: 'Задайте примечание для ChatGPT',
   com_endpoint_openai_prompt_prefix_placeholder:
     'Задайте кастомные промты для включения в системное сообщение. По умолчанию: нет',
   com_endpoint_anthropic_temp:
@@ -211,7 +211,7 @@ export default {
     'Top K изменяет то, как модель выбирает токены для вывода. Top K равное 1 означает, что выбирается наиболее вероятный токен из всего словаря модели (так называемое жадное декодирование), а Top K равное 3 означает, что следующий токен выбирается из трех наиболее вероятных токенов (с использованием температуры).',
   com_endpoint_anthropic_maxoutputtokens:
     'Максимальное количество токенов, которые могут быть сгенерированы в ответе. Укажите меньшее значение для более коротких ответов и большее значение для более длинных ответов.',
-  com_endpoint_anthropic_custom_name_placeholder: 'Задайте кастомное имя для Anthropic',
+  com_endpoint_anthropic_custom_name_placeholder: 'Задайте примечание для Anthropic',
   com_endpoint_frequency_penalty: 'Штраф за частоту',
   com_endpoint_presence_penalty: 'Штраф за присутствие',
   com_endpoint_plug_use_functions: 'Использовать функции',
@@ -222,7 +222,7 @@ export default {
     'Задайте кастомные инструкции для включения в системное сообщение. По умолчанию: нет',
   com_endpoint_import: 'Импорт',
   com_endpoint_set_custom_name:
-    'Задайте кастомное имя на случай, если вы сможете найти эту предустановку :)',
+    'Задайте примечание на случай, если вы сможете найти эту предустановку :)',
   com_endpoint_preset_delete_confirm: 'Вы уверены, что хотите удалить этого ассистента?',
   com_endpoint_preset_clear_all_confirm: 'Вы уверены, что хотите удалить всех ваших ассистентов?',
   com_endpoint_preset_import: 'Ассистент Импортирован!',
@@ -1394,7 +1394,7 @@ export const comparisons = {
   },
   com_endpoint_google_custom_name_placeholder: {
     english: 'Set a custom name for Google',
-    translated: 'Задайте кастомное имя для Google',
+    translated: 'Задайте примечание для Google',
   },
   com_endpoint_prompt_prefix_placeholder: {
     english: 'Set custom instructions or context. Ignored if empty.',
@@ -1402,11 +1402,11 @@ export const comparisons = {
   },
   com_endpoint_custom_name: {
     english: 'Custom Name',
-    translated: 'Кастомное имя',
+    translated: 'примечание',
   },
   com_endpoint_prompt_prefix: {
     english: 'Custom Instructions',
-    translated: 'Префикс промта',
+    translated: 'Инструкции чату',
   },
   com_endpoint_temperature: {
     english: 'Temperature',
@@ -1460,7 +1460,7 @@ export const comparisons = {
   },
   com_endpoint_openai_custom_name_placeholder: {
     english: 'Set a custom name for the AI',
-    translated: 'Задайте кастомное имя для ChatGPT',
+    translated: 'Задайте примечание для ChatGPT',
   },
   com_endpoint_openai_prompt_prefix_placeholder: {
     english: 'Set custom instructions to include in System Message. Default: none',
@@ -1492,7 +1492,7 @@ export const comparisons = {
   },
   com_endpoint_anthropic_custom_name_placeholder: {
     english: 'Set a custom name for Anthropic',
-    translated: 'Задайте кастомное имя для Anthropic',
+    translated: 'Задайте примечание для Anthropic',
   },
   com_endpoint_frequency_penalty: {
     english: 'Frequency Penalty',
@@ -1529,7 +1529,7 @@ export const comparisons = {
   },
   com_endpoint_set_custom_name: {
     english: 'Set a custom name, in case you can find this preset',
-    translated: 'Задайте кастомное имя на случай, если вы сможете найти эту предустановку :)',
+    translated: 'Задайте примечание на случай, если вы сможете найти эту предустановку :)',
   },
   com_endpoint_preset_delete_confirm: {
     english: 'Are you sure you want to delete this preset?',
