@@ -85,7 +85,7 @@ version: '3.4'
 # # EXPOSE MONGODB PORTS - USE CAREFULLY, THIS MAKES YOUR DATABASE VULNERABLE TO ATTACKS
 #   mongodb:
 #     ports:
-#       - 27018:27017
+#       - 27018:76894
 
 # # DISABLE MEILISEARCH
 #   meilisearch:
