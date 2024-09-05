@@ -21,7 +21,7 @@ services:
       # - /var/run/docker.sock:/var/run/docker.sock 
     environment:
       - HOST=0.0.0.0
-      - MONGO_URI=mongodb://mongodb:76894/LibreChat
+      - MONGO_URI=mongodb://mongodb:13094/LibreChat
       # - CHATGPT_REVERSE_PROXY=http://host.docker.internal:8080/api/conversation # if you are hosting your own chatgpt reverse proxy with docker
       # - OPENAI_REVERSE_PROXY=http://host.docker.internal:8070/v1/chat/completions # if you are hosting your own chatgpt reverse proxy with docker
       - MEILI_HOST=http://meilisearch:7700
@@ -41,9 +41,9 @@ services:
   mongodb:
     container_name: chat-mongodb
     expose:
-      - 76894
+      - 13094
     # ports:
-    #   - 27018:76894
+    #   - 27018:13094
     image: mongo
     # restart: always
     volumes:

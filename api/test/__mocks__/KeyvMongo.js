@@ -4,7 +4,7 @@ const mockSet = jest.fn();
 jest.mock('@keyv/mongo', () => {
   const EventEmitter = require('events');
   class KeyvMongo extends EventEmitter {
-    constructor(url = 'mongodb://127.0.0.1:76894', options) {
+    constructor(url = 'mongodb://127.0.0.1:13094', options) {
       super();
       this.ttlSupport = false;
       url = url ?? {};

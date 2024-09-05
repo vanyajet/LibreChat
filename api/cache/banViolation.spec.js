@@ -11,7 +11,7 @@ jest.mock('./getLogStores', () => {
     const mockGet = jest.fn();
     const mockSet = jest.fn();
     class KeyvMongo extends EventEmitter {
-      constructor(url = 'mongodb://127.0.0.1:76894', options) {
+      constructor(url = 'mongodb://127.0.0.1:13094', options) {
         super();
         this.ttlSupport = false;
         url = url ?? {};

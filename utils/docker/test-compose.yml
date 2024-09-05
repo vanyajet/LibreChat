@@ -3,7 +3,7 @@ services:
   # api:
   #     - HOST=0.0.0.0
   #     - NODE_ENV=production
-  #     - MONGO_URI=mongodb://mongodb:76894/LibreChat
+  #     - MONGO_URI=mongodb://mongodb:13094/LibreChat
   #     - MEILI_HOST=http://meilisearch:7700
   #     - RAG_PORT=${RAG_PORT:-8000}
   #     - RAG_API_URL=http://rag_api:${RAG_PORT:-8000}
@@ -22,7 +22,7 @@ services:
   mongodb:
     container_name: chat-mongodb
     ports:  # Uncomment this to access mongodb from outside docker, not safe in deployment
-      - 27018:76894
+      - 27018:13094
     image: mongo
     restart: always
     volumes:
