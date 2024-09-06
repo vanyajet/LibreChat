@@ -196,6 +196,7 @@ const PresetItems: FC<{
                             e.stopPropagation();
                             onChangePreset(preset);
                           }}
+                          disabled={preset.user === 'any'}
                         >
                           <EditIcon />
                         </button>
@@ -206,6 +207,7 @@ const PresetItems: FC<{
                             e.stopPropagation();
                             onDeletePreset(preset);
                           }}
+                          disabled={preset.user === 'any'}
                         >
                           <TrashIcon />
                         </button>
