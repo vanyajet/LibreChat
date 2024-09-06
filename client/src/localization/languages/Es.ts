@@ -598,9 +598,9 @@ export default {
   com_nav_lang_indonesia: 'Indonesia',
   com_nav_lang_hebrew: 'עברית',
   com_privacy_policy_title: 'Politique de Confidentialité',
-  com_privacy_policy_header: 'Politique de Confidentialité de Profi.ai',
+  com_privacy_policy_header: 'Politique de Confidentialité de braintech.chat',
   com_privacy_policy_intro:
-    'Chez Profi.ai, nous comprenons l\'importance de la confidentialité et de la sécurité des données pour nos utilisateurs. Cette Politique de Confidentialité explique quelles informations nous collectons, comment nous les utilisons et les mesures que nous prenons pour les protéger. En utilisant notre application, vous acceptez les termes de cette Politique de Confidentialité.',
+    'Chez braintech.chat, nous comprenons l\'importance de la confidentialité et de la sécurité des données pour nos utilisateurs. Cette Politique de Confidentialité explique quelles informations nous collectons, comment nous les utilisons et les mesures que nous prenons pour les protéger. En utilisant notre application, vous acceptez les termes de cette Politique de Confidentialité.',
   com_privacy_policy_h_1: '1. Collecte d\'informations',
   com_privacy_policy_p_1: 'Nous pouvons collecter les types d\'informations suivants:',
   com_privacy_policy_li_1_1: 'Données personnelles: nom, adresse email, informations de contact.',
