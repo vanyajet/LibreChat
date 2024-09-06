@@ -42,12 +42,6 @@ export default function Landing({ Header }: { Header?: ReactNode }) {
   const assistantDesc = (assistant && assistant?.description) || '';
   const avatar = (assistant && (assistant?.metadata?.avatar as string)) || '';
 
-  console.log('conversationLOG', conversation);
-  console.log('isPreset', isPreset);
-  console.log('preset', preset);
-  console.log('presetName', presetName);
-  console.log('presetDesc', presetDesc);
-
   const { setError, setErrorMessage } = usePluginDialogHelpers();
 
   if (
