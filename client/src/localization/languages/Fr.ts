@@ -720,9 +720,9 @@ export default {
   com_auth_reset_password_if_email_exists:
     'Si un compte avec ce courriel existe, un courriel avec des instructions de réinitialisation de mot de passe a été envoyé. Assurez-vous de vérifier votre dossier de courrier indésirable.',
   com_privacy_policy_title: 'Política de Privacidad',
-  com_privacy_policy_header: 'Política de Privacidad de Profi.ai',
+  com_privacy_policy_header: 'Política de Privacidad de braintech.chat',
   com_privacy_policy_intro:
-    'En Profi.ai, entendemos la importancia de la privacidad y la seguridad de los datos para nuestros usuarios. Esta Política de Privacidad explica qué información recopilamos, cómo la usamos y las medidas que tomamos para protegerla. Al usar nuestra aplicación, usted acepta los términos de esta Política de Privacidad.',
+    'En braintech.chat, entendemos la importancia de la privacidad y la seguridad de los datos para nuestros usuarios. Esta Política de Privacidad explica qué información recopilamos, cómo la usamos y las medidas que tomamos para protegerla. Al usar nuestra aplicación, usted acepta los términos de esta Política de Privacidad.',
   com_privacy_policy_h_1: '1. Recopilación de información',
   com_privacy_policy_p_1: 'Podemos recopilar los siguientes tipos de información:',
   com_privacy_policy_li_1_1:

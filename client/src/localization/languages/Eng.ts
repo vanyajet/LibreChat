@@ -685,9 +685,9 @@ export default {
   com_nav_lang_indonesia: 'Indonesia',
   com_nav_lang_hebrew: 'עברית',
   com_privacy_policy_title: 'Privacy Policy',
-  com_privacy_policy_header: 'Privacy Policy of Profi.ai',
+  com_privacy_policy_header: 'Privacy Policy of BrainTech',
   com_privacy_policy_intro:
-    'At Profi.ai, we understand the importance of privacy and data security for our users. This Privacy Policy explains what information we collect, how we use it, and the measures we take to protect it. By using our application, you agree to the terms of this Privacy Policy.',
+    'At BrainTech, we understand the importance of privacy and data security for our users. This Privacy Policy explains what information we collect, how we use it, and the measures we take to protect it. By using our application, you agree to the terms of this Privacy Policy.',
   com_privacy_policy_h_1: '1. Information Collection',
   com_privacy_policy_p_1: 'We may collect the following types of information:',
   com_privacy_policy_li_1_1: 'Personal Data: name, email address, contact information.',
@@ -728,7 +728,7 @@ export default {
   com_privacy_policy_li_8_2: 'Address: [insert your address]',
   com_terms_of_use_1: 'Terms and Conditions of Use',
   com_terms_of_use_2:
-    'These Terms and Conditions (\'Terms\', \'Conditions\') govern your relationship with the website https://profi.ai (\'Service\'). Please read these Terms and Conditions carefully before using the Service. Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, intermediaries, and others who access or use the Service. By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the Service.',
+    'These Terms and Conditions (\'Terms\', \'Conditions\') govern your relationship with the website https://braintech.chat (\'Service\'). Please read these Terms and Conditions carefully before using the Service. Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, intermediaries, and others who access or use the Service. By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the Service.',
   com_terms_of_use_8: '1. Availability, Errors, and Inaccuracies',
   com_terms_of_use_9:
     'We are constantly updating our product and service offerings on the Service. The products or services available on our Service may be inaccurately priced, inaccurately described, or unavailable, and we may experience delays in updating information on the Service and in our advertising on other websites. We cannot and do not guarantee the accuracy or completeness of any information, including prices, product images, specifications, availability, and services. We reserve the right to change or update information and to correct errors, inaccuracies, or omissions at any time without prior notice.',
@@ -736,19 +736,19 @@ export default {
   com_terms_of_use_12:
     'You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password, whether your password is with our Service or a third-party service. You agree to notify us immediately upon becoming aware of any breach of security or unauthorized use of your account.',
   com_terms_of_use_13:
-    'profi.ai reserves the right to deactivate a user\'s account in the event of fraudulent activities committed by the user during the existence of profi.ai.',
+    'braintech.chat reserves the right to deactivate a user\'s account in the event of fraudulent activities committed by the user during the existence of .',
   com_terms_of_use_14: 'Actions that may be considered fraudulent activities:',
   com_terms_of_use_15: 'creating multiple accounts under one name;',
-  com_terms_of_use_16: 'creating multiple accounts to repeatedly use profi.ai bonuses;',
+  com_terms_of_use_16: 'creating multiple accounts to repeatedly use braintech.chat bonuses;',
   com_terms_of_use_17:
     'fraudulent payments with stolen credit cards or other fraudulent payment methods;',
   com_terms_of_use_18:
     'any behavior that presents signs of fraudulent activity and risks to the Service.',
   com_terms_of_use_19:
-    'Our users retain full ownership and copyright over all designs uploaded to our site, profi.ai social media pages, and emails created by our users. We will never access or view any emails created by our users without their consent.',
+    'Our users retain full ownership and copyright over all designs uploaded to our site, braintech.chat social media pages, and emails created by our users. We will never access or view any emails created by our users without their consent.',
   com_terms_of_use_20: '3. Links to Other Websites',
   com_terms_of_use_21:
-    'Our Service may contain links to third-party websites or services that are not owned or controlled by profi.ai. profi.ai has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites or services. You acknowledge and agree that profi.ai shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods, or services available on or through any such websites or services. We strongly advise you to read the terms and conditions and privacy policies of any third-party websites or services that you visit.',
+    'Our Service may contain links to third-party websites or services that are not owned or controlled by braintech.chat. braintech.chat has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites or services. You acknowledge and agree that braintech.chat shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods, or services available on or through any such websites or services. We strongly advise you to read the terms and conditions and privacy policies of any third-party websites or services that you visit.',
   com_terms_of_use_3: '4. Purchases',
   com_terms_of_use_4:
     'If you wish to top up your balance for service use, you may be asked to provide certain relevant information regarding your Purchase, including, without limitation, your credit card number, the expiration date of your credit card, your billing address, and your shipping information. You represent and warrant that:',
@@ -771,7 +771,7 @@ export default {
     'We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including but not limited to breach of the Terms. Upon termination, your right to use the Services will immediately cease. If you wish to terminate your account, you may simply discontinue using the Service.',
   com_terms_of_use_27_1: '8. Limitation of Liability',
   com_terms_of_use_27_2:
-    'In no event shall profi.ai, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from',
+    'In no event shall braintech.chat, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from',
   com_terms_of_use_28: 'your access to or use of or inability to access or use the Service;',
   com_terms_of_use_29: 'any conduct or content of any third party on the Service;',
   com_terms_of_use_30: 'any content obtained from the Service;',
@@ -779,7 +779,7 @@ export default {
     'unauthorized access, use, or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence) or any other legal theory, whether or not we have been informed of the possibility of such damage, and even if a remedy set forth herein is found to have failed of its essential purpose.',
   com_terms_of_use_32: '9. Disclaimer',
   com_terms_of_use_33:
-    'Your use of the Service is at your sole risk. The Service is provided on an \'AS IS\' and \'AS AVAILABLE\' basis. The Service is provided without warranties of any kind, whether express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, non-infringement, or course of performance. profi.ai, its subsidiaries, affiliates, and its licensors do not warrant that:',
+    'Your use of the Service is at your sole risk. The Service is provided on an \'AS IS\' and \'AS AVAILABLE\' basis. The Service is provided without warranties of any kind, whether express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, non-infringement, or course of performance. braintech.chat, its subsidiaries, affiliates, and its licensors do not warrant that:',
   com_terms_of_use_34:
     'the Service will function uninterrupted, secure, or be available at any particular time or location;',
   com_terms_of_use_35: 'any errors or defects will be corrected;',
