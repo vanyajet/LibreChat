@@ -41,6 +41,7 @@ export default {
   com_ui_entries: 'записей',
   com_ui_pay_per_call: 'Все AI-разговоры в одном месте. Оплачивайте за вызовы, а не за месяц',
   com_ui_new_footer: 'Все AI-разговоры в одном месте.',
+  com_ui_latest_footer: 'Искуственный Интеллект для Каждого Ума.',
   com_ui_enter: 'Ввести',
   com_ui_submit: 'Отправить',
   com_ui_upload_success: 'Файл успешно загружен',
@@ -797,6 +798,10 @@ export const comparisons = {
   com_ui_capability_decline_requests: {
     english: 'Trained to decline inappropriate requests',
     translated: 'Обучен отклонять неподходящие запросы',
+  },
+  com_ui_limitations: {
+    english: 'Limitations',
+    translated: 'Ограничения',
   },
   com_ui_limitations: {
     english: 'Limitations',
