@@ -1,7 +1,9 @@
 import { useGetModelsQuery } from 'librechat-data-provider/react-query';
-import type { TConversation } from 'librechat-data-provider';
+import { EModelEndpoint, type TConversation } from 'librechat-data-provider';
 import type { TSetOption } from '~/common';
 import { multiChatOptions } from './options';
+import { useRecoilState } from 'recoil';
+import store from '~/store';
 
 type TGoogleProps = {
   showExamples: boolean;
@@ -23,6 +25,7 @@ export default function ModelSelect({
   showAbove = true,
 }: TSelectProps) {
   const modelsQuery = useGetModelsQuery();
+  const [hideSidePanel, setHideSidePanel] = useRecoilState<boolean>(store.hideSidePanel);
 
   if (!conversation?.endpoint) {
     return null;
@@ -33,6 +36,10 @@ export default function ModelSelect({
   const endpoint = endpointType ?? _endpoint;
 
   const OptionComponent = multiChatOptions[endpoint];
+
+  if (endpoint === EModelEndpoint.assistants && !!hideSidePanel) {
+    setHideSidePanel(false);
+  }
 
   if (!OptionComponent) {
     return null;

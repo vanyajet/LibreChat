@@ -803,10 +803,6 @@ export const comparisons = {
     english: 'Limitations',
     translated: 'Ограничения',
   },
-  com_ui_limitations: {
-    english: 'Limitations',
-    translated: 'Ограничения',
-  },
   com_ui_limitation_incorrect_info: {
     english: 'May occasionally generate incorrect information',
     translated: 'Иногда может генерировать некорректную информацию',
