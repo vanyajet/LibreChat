@@ -98,7 +98,7 @@ or the user will need to attempt logging in to have a verification link sent to 
     silentExit(1);
   }
 
-  const user = { email, password, name, username, confirm_password: password };
+  const user = { email, password, name, username, confirm_password: password, isDeleted: false };
   let result;
   try {
     result = await registerUser(user, { emailVerified });

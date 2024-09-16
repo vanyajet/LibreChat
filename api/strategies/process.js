@@ -76,6 +76,7 @@ const createSocialUser = async ({
     username,
     name,
     emailVerified,
+    isDeleted: false,
   };
 
   const newUserId = await createUser(update);

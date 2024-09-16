@@ -149,7 +149,16 @@ export default function Landing({ Header }: { Header?: ReactNode }) {
                     </div>
                   )}
                 </div>
-                {isPreset && (
+                {assistantName ? (
+                  <div className="flex flex-col items-center gap-0 p-2">
+                    <div className="text-center text-2xl font-medium dark:text-white">
+                      {assistantName}
+                    </div>
+                    <div className="text-token-text-secondary max-w-md text-center text-xl font-normal ">
+                      {assistantDesc ? assistantDesc : localize('com_nav_welcome_message')}
+                    </div>
+                  </div>
+                ) : isPreset ? (
                   <div className="flex flex-col items-center gap-0 p-2">
                     <div className="text-center text-2xl font-medium dark:text-white">
                       {presetName}
@@ -158,8 +167,12 @@ export default function Landing({ Header }: { Header?: ReactNode }) {
                       {presetDesc ? presetDesc : localize('com_nav_welcome_message')}
                     </div>
                   </div>
+                ) : (
+                  <div className="mb-5 max-w-[75vh] px-12 text-center text-lg font-medium dark:text-white md:px-0 md:text-2xl">
+                    {conversation?.greeting ?? localize('com_nav_welcome_message')}
+                  </div>
                 )}
-                {assistantName ? (
+                {/* {assistantName ? (
                   <div className="flex flex-col items-center gap-0 p-2">
                     <div className="text-center text-2xl font-medium dark:text-white">
                       {assistantName}
@@ -173,10 +186,10 @@ export default function Landing({ Header }: { Header?: ReactNode }) {
                     {isPreset
                       ? null
                       : isAssistant
-                        ? conversation?.greeting ?? localize('com_nav_welcome_assistant')
-                        : conversation?.greeting ?? localize('com_nav_welcome_message')}
+                      ? conversation?.greeting ?? localize('com_nav_welcome_assistant')
+                      : conversation?.greeting ?? localize('com_nav_welcome_message')}
                   </div>
-                )}
+                )} */}
               </>
             )}
           </div>

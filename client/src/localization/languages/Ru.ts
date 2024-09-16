@@ -100,6 +100,7 @@ export default {
     'Слишком много попыток входа в систему за короткий промежуток времени. Пожалуйста, повторите попытку позже.',
   com_auth_error_login_ban:
     'Ваша учетная запись была временно заблокирована в связи с нарушениями нашего сервиса.',
+  com_auth_error_login_deleted: 'Ваш аккаунт был удален.',
   com_auth_error_login_server:
     'Произошла внутренняя ошибка сервера. Пожалуйста, подождите несколько минут и повторите попытку.',
   com_auth_no_account: 'Еще не зарегистрированы?',
@@ -313,6 +314,11 @@ export default {
   com_nav_plugins: 'Плагины',
   com_nav_plugin_store: 'Магазин плагинов',
   com_nav_plugin_search: 'Поиск плагинов',
+  com_nav_delete_warning: 'ВНИМАНИЕ: Это действие навсегда удалит Ваш аккаунт.',
+  com_nav_delete_data_info: 'Все ваши данные будут удалены.',
+  com_nav_delete_account_email_placeholder: 'Пожалуйста введите свою почту',
+  com_nav_delete_account_button: 'Удалить аккаунт',
+  com_nav_delete_account_confirm_placeholder: 'Что бы продолжить, введите "DELETE" в поле ниже',
   com_nav_plugin_auth_error:
     'При попытке аутентификации этого плагина произошла ошибка. Пожалуйста, попробуйте еще раз.',
   com_nav_export_filename: 'Имя файла',

@@ -7,6 +7,10 @@ const loginController = async (req, res) => {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
+    if (req.user.isDeleted) {
+      return res.status(410).json({ message: 'Your account has been deleted' });
+    }
+
     const { password: _, __v, ...user } = req.user;
     user.id = user._id.toString();
 

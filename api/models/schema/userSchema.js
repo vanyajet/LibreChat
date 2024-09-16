@@ -13,6 +13,7 @@ const { SystemRoles } = require('librechat-data-provider');
  * @property {string} [username] - The user's username, in lowercase
  * @property {string} email - The user's email address
  * @property {boolean} emailVerified - Whether the user's email is verified
+ * @property {boolean} isDeleted - Whether the user's account is deleted
  * @property {string} [password] - The user's password, trimmed with 8-128 characters
  * @property {string} [avatar] - The URL of the user's avatar
  * @property {string} provider - The provider of the user's account (e.g., 'local', 'google')
@@ -58,6 +59,11 @@ const userSchema = mongoose.Schema(
       index: true,
     },
     emailVerified: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    isDeleted: {
       type: Boolean,
       required: true,
       default: false,

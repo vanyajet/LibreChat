@@ -18,7 +18,8 @@ const oauthHandler = async (req, res) => {
   try {
     await checkDomainAllowed(req, res);
     await checkBan(req, res);
-    if (req.banned) {
+    if (req.banned || req.user.isDeleted) {
+      res.status(410).json({ message: 'Your account has been deleted' });
       return;
     }
     await setAuthTokens(req.user._id, res);

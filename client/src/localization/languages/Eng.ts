@@ -295,6 +295,7 @@ export default {
     'Too many login attempts in a short amount of time. Please try again later.',
   com_auth_error_login_ban:
     'Your account has been temporarily banned due to violations of our service.',
+  com_auth_error_login_deleted: 'Your account has been deleted.',
   com_auth_error_login_server:
     'There was an internal server error. Please wait a few moments and try again.',
   com_auth_error_login_unverified:
