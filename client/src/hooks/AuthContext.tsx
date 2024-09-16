@@ -84,6 +84,7 @@ const AuthContextProvider = ({
   const refreshToken = useRefreshTokenMutation();
 
   const login = (data: TLoginUser) => {
+    data.email = data.email.trim().replace(/\s+/g, '').toLowerCase();
     loginUser.mutate(data, {
       onSuccess: (data: TLoginResponse) => {
         const { user, token } = data;
