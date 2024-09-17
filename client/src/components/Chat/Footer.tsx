@@ -92,15 +92,17 @@ export default function Footer({ className }: { className?: string }) {
     </React.Fragment>
   ));
 
-  const footerElements = [...mainContentRender, privacyPolicyRender, termsOfServiceRender].filter(
-    Boolean,
-  );
+  const footerElements = [
+    window.innerWidth >= 768 ? mainContentRender : null,
+    privacyPolicyRender,
+    termsOfServiceRender,
+  ].filter(Boolean);
 
   return (
     <div
       className={
         className ||
-        'relative flex items-center justify-center gap-2 px-2 py-2 text-center text-xs text-gray-600 dark:text-gray-300 md:px-[60px] xs:hidden'
+        'relative flex items-center justify-center gap-2 px-2 py-2 text-center text-xs text-gray-600 dark:text-gray-300 md:px-[60px]'
       }
     >
       {footerElements.map((contentRender, index) => {
