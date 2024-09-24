@@ -208,6 +208,37 @@ export default function usePresets() {
     setPresetModalVisible(true);
   };
 
+  const onDuplicatePreset = (preset: TPreset) => {
+    const title = `${preset.title} ${localize('com_endpoint_preset_copy')}`;
+    console.log(preset);
+    const _preset = cleanupPreset({
+      preset: {
+        // @ts-ignore
+        ...(({ __v, _id, presetId, createdAt, updatedAt, ...rest }) => rest)(preset),
+        title,
+        user: user?.id,
+      },
+    });
+
+    const toastTitle = _preset.title
+      ? `\`${_preset.title}\``
+      : localize('com_endpoint_preset_title');
+
+    createPresetMutation.mutate(_preset, {
+      onSuccess: () => {
+        showToast({
+          message: `${toastTitle} ${localize('com_endpoint_preset_copied')}`,
+        });
+      },
+      onError: () => {
+        showToast({
+          message: localize('com_endpoint_preset_save_error'),
+          severity: NotificationSeverity.ERROR,
+        });
+      },
+    });
+  };
+
   const clearAllPresets = () => deletePresetsMutation.mutate(undefined);
 
   const onDeletePreset = (preset: TPreset) => {
@@ -247,6 +278,7 @@ export default function usePresets() {
     onFileSelected,
     onSelectPreset,
     onChangePreset,
+    onDuplicatePreset,
     clearAllPresets,
     onDeletePreset,
     submitPreset,

@@ -220,6 +220,7 @@ export type TPresetItemProps = {
   value: TPreset;
   onSelect: (preset: TPreset) => void;
   onChangePreset: (preset: TPreset) => void;
+  onDuplicatePreset: (preset: TPreset) => void;
   onDeletePreset: (preset: TPreset) => void;
 };
 

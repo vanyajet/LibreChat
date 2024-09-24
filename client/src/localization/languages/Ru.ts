@@ -225,26 +225,30 @@ export default {
   com_endpoint_import: 'Импорт',
   com_endpoint_set_custom_name:
     'Задайте примечание на случай, если вы сможете найти эту предустановку :)',
-  com_endpoint_preset_delete_confirm: 'Вы уверены, что хотите удалить этого ассистента?',
-  com_endpoint_preset_clear_all_confirm: 'Вы уверены, что хотите удалить всех ваших ассистентов?',
-  com_endpoint_preset_import: 'Ассистент Импортирован!',
+  com_endpoint_preset_delete_confirm: 'Вы уверены, что хотите удалить этот шаблон?',
+  com_endpoint_preset_clear_all_confirm: 'Вы уверены, что хотите удалить все ваши шаблоны?',
+  com_endpoint_preset_import: 'Шаблон Импортирован!',
   com_endpoint_preset_import_error:
-    'Произошла ошибка при импорте вашего ассистента. Пожалуйста, попробуйте еще раз.',
+    'Произошла ошибка при импорте вашего шаблона. Пожалуйста, попробуйте еще раз.',
   com_endpoint_preset_save_error:
-    'Произошла ошибка при сохранении вашего ассистента. Пожалуйста, попробуйте еще раз.',
+    'Произошла ошибка при сохранении вашего шаблона. Пожалуйста, попробуйте еще раз.',
   com_endpoint_preset_delete_error:
-    'Произошла ошибка при удалении вашего ассистента. Пожалуйста, попробуйте еще раз.',
-  com_endpoint_preset_default_removed: 'больше не ассистент по умолчанию.',
+    'Произошла ошибка при удалении вашего шаблона. Пожалуйста, попробуйте еще раз.',
+  com_endpoint_preset_default_removed: 'больше не шаблон по умолчанию.',
   com_endpoint_preset_default_item: 'По умолчанию:',
-  com_endpoint_preset_default_none: 'Активных ассистентов по умолчанию нет.',
-  com_endpoint_preset_title: 'Ассистент',
+  com_endpoint_preset_default_none: 'Активных шаблонов по умолчанию нет.',
+  com_endpoint_preset_title: 'Шаблон',
+  com_endpoint_preset_copy: '(Копия)',
+  com_endpoint_preset_set_default: 'Установить шаблон по умолчанию',
+  com_endpoint_preset_duplicate: 'Скопировать шаблон',
+  com_endpoint_preset_copied: 'Cкопирован!',
   com_endpoint_preset_saved: 'Сохранено!',
-  com_endpoint_preset_default: 'теперь ассистент По умолчанию.',
-  com_endpoint_preset: 'ассистента',
-  com_endpoint_presets: 'ассистенты',
-  com_endpoint_preset_selected: 'Ассистент Активирован!',
+  com_endpoint_preset_default: 'теперь шаблон По умолчанию.',
+  com_endpoint_preset: 'шаблона',
+  com_endpoint_presets: 'шаблоны',
+  com_endpoint_preset_selected: 'Шаблон Активирован!',
   com_endpoint_preset_selected_title: 'Активирован!',
-  com_endpoint_preset_name: 'Имя ассистента',
+  com_endpoint_preset_name: 'Название шаблона',
   com_endpoint_new_topic: 'Новая тема',
   com_endpoint: 'Эндпоинт',
   com_endpoint_hide: 'Скрыть',
@@ -255,15 +259,15 @@ export default {
   com_endpoint_show_what_settings: 'Показать настройки {0}',
   com_endpoint_save: 'Сохранить',
   com_endpoint_export: 'Экспорт',
-  com_endpoint_save_as_preset: 'Сохранить как Ассистента',
+  com_endpoint_save_as_preset: 'Сохранить как шаблон',
   com_endpoint_presets_clear_warning:
-    'Вы уверены, что хотите удалить всех ассистентов? Это действие необратимо и восстановление невозможно.',
+    'Вы уверены, что хотите удалить все шаблоны? Это действие необратимо и восстановление невозможно.',
   com_endpoint_not_implemented: 'Не реализовано',
-  com_endpoint_no_presets: 'Пока нет ассистентов, используйте кнопку настроек чтобы создать его',
+  com_endpoint_no_presets: 'Пока нет шаблонов, используйте кнопку настроек слева чтобы создать его',
   com_endpoint_not_available: 'Нет доступных эндпоинтов',
   com_endpoint_view_options: 'Просмотреть Настройки',
-  com_endpoint_save_convo_as_preset: 'Сохранить текущий разговор как Ассистента',
-  com_endpoint_my_preset: 'Мой Ассистента',
+  com_endpoint_save_convo_as_preset: 'Сохранить текущий разговор как шаблон',
+  com_endpoint_my_preset: 'Мой шаблон',
   com_endpoint_agent_model: 'Модель агента (Рекомендуется: GPT-3.5)',
   com_endpoint_completion_model: 'Модель завершения (Рекомендуется: GPT-4)',
   com_endpoint_func_hover: 'Включить использование плагинов как функции OpenAI',
@@ -383,7 +387,7 @@ export default {
   com_nav_info_latex_parsing:
     'Когда включено: код LaTeX в сообщениях будет отображаться как математические уравнения. Отключение этой функции может повысить производительность, если вам не требуется рендеринг LaTeX.',
   com_nav_info_revoke:
-    'Это действие отозвет и удалит все API-ключи, которые вы предоставили. Вам нужно будет повторно ввести эти учетные данные, чтобы продолжить использование этих конечных точек.',
+    'Это действие отозвет и удалит все API-ключи, которые вы предоставили. Вам нужно будет повторно ввести эти учетные данные, чтобы продолжить использование этих сервисов.',
   com_nav_info_delete_cache_storage:
     'Это действие удалит все кэшированные аудиофайлы TTS (Text-to-Speech), хранящиеся на вашем устройстве. Кэшированные аудиофайлы используются для ускорения воспроизведения ранее сгенерированного аудио TTS, но они могут занимать место на вашем устройстве.',
   com_nav_speech_to_text: 'Речь в текст',
@@ -535,7 +539,7 @@ export default {
   com_ui_fork_branches: 'Включить связанные ветки',
   com_ui_fork_visible: 'Только видимые сообщения',
   com_ui_fork_from_message: 'Выберите вариант ответвления',
-  com_ui_mention: 'Упомянуть конечную точку, помощника или предустановку для быстрого переключения',
+  com_ui_mention: 'Упомянуть сервис, помощника или предустановку для быстрого переключения',
   com_ui_import_conversation_file_type_error: 'Неподдерживаемый тип импорта',
   com_ui_avatar: 'Аватар',
   com_ui_unknown: 'Неизвестно',
@@ -1540,32 +1544,31 @@ export const comparisons = {
   },
   com_endpoint_preset_delete_confirm: {
     english: 'Are you sure you want to delete this preset?',
-    translated: 'Вы уверены, что хотите удалить этого ассистента?',
+    translated: 'Вы уверены, что хотите удалить этот шаблон?',
   },
   com_endpoint_preset_clear_all_confirm: {
     english: 'Are you sure you want to delete all of your presets?',
-    translated: 'Вы уверены, что хотите удалить всех ваших ассистентов?',
+    translated: 'Вы уверены, что хотите удалить все ваши шаблоны?',
   },
   com_endpoint_preset_import: {
     english: 'Preset Imported!',
-    translated: 'Ассистент Импортирован!',
+    translated: 'Шаблон Импортирован!',
   },
   com_endpoint_preset_import_error: {
     english: 'There was an error importing your preset. Please try again.',
-    translated: 'Произошла ошибка при импорте вашего ассистента. Пожалуйста, попробуйте еще раз.',
+    translated: 'Произошла ошибка при импорте вашего шаблона. Пожалуйста, попробуйте еще раз.',
   },
   com_endpoint_preset_save_error: {
     english: 'There was an error saving your preset. Please try again.',
-    translated:
-      'Произошла ошибка при сохранении вашего ассистента. Пожалуйста, попробуйте еще раз.',
+    translated: 'Произошла ошибка при сохранении вашего шаблона. Пожалуйста, попробуйте еще раз.',
   },
   com_endpoint_preset_delete_error: {
     english: 'There was an error deleting your preset. Please try again.',
-    translated: 'Произошла ошибка при удалении вашего ассистента. Пожалуйста, попробуйте еще раз.',
+    translated: 'Произошла ошибка при удалении вашего шаблона. Пожалуйста, попробуйте еще раз.',
   },
   com_endpoint_preset_default_removed: {
     english: 'is no longer the default preset.',
-    translated: 'больше не ассистент по умолчанию.',
+    translated: 'больше не шаблон по умолчанию.',
   },
   com_endpoint_preset_default_item: {
     english: 'Default:',
@@ -1573,11 +1576,11 @@ export const comparisons = {
   },
   com_endpoint_preset_default_none: {
     english: 'No default preset active.',
-    translated: 'Активных ассистентов по умолчанию нет.',
+    translated: 'Активных шаблонов по умолчанию нет.',
   },
   com_endpoint_preset_title: {
     english: 'Preset',
-    translated: 'Ассистент',
+    translated: 'Шаблон',
   },
   com_endpoint_preset_saved: {
     english: 'Saved!',
@@ -1585,19 +1588,19 @@ export const comparisons = {
   },
   com_endpoint_preset_default: {
     english: 'is now the default preset.',
-    translated: 'теперь ассистент По умолчанию.',
+    translated: 'теперь шаблон По умолчанию.',
   },
   com_endpoint_preset: {
     english: 'preset',
-    translated: 'ассистент',
+    translated: 'шаблон',
   },
   com_endpoint_presets: {
     english: 'presets',
-    translated: 'ассистенты',
+    translated: 'шаблоны',
   },
   com_endpoint_preset_selected: {
     english: 'Preset Active!',
-    translated: 'Ассистент Активирован!',
+    translated: 'Шаблон Активирован!',
   },
   com_endpoint_preset_selected_title: {
     english: 'Active!',
@@ -1605,7 +1608,7 @@ export const comparisons = {
   },
   com_endpoint_preset_name: {
     english: 'Preset Name',
-    translated: 'Имя ассистента',
+    translated: 'Название шаблона',
   },
   com_endpoint_new_topic: {
     english: 'New Topic',
@@ -1645,12 +1648,12 @@ export const comparisons = {
   },
   com_endpoint_save_as_preset: {
     english: 'Save As Preset',
-    translated: 'Сохранить как Ассистента',
+    translated: 'Сохранить как шаблон',
   },
   com_endpoint_presets_clear_warning: {
     english: 'Are you sure you want to clear all presets? This is irreversible.',
     translated:
-      'Вы уверены, что хотите удалить всех ассистентов? Это действие необратимо и восстановление невозможно.',
+      'Вы уверены, что хотите удалить все шаблоны? Это действие необратимо и восстановление невозможно.',
   },
   com_endpoint_not_implemented: {
     english: 'Not implemented',
@@ -1658,7 +1661,7 @@ export const comparisons = {
   },
   com_endpoint_no_presets: {
     english: 'No presets yet, use the settings button to create one',
-    translated: 'Пока нет ассистентов, используйте кнопку настроек чтобы создать его',
+    translated: 'Пока нет шаблонов, используйте кнопку настроек чтобы создать его',
   },
   com_endpoint_not_available: {
     english: 'No endpoint available',
@@ -1670,11 +1673,11 @@ export const comparisons = {
   },
   com_endpoint_save_convo_as_preset: {
     english: 'Save Conversation as Preset',
-    translated: 'Сохранить текущий разговор как Ассистент',
+    translated: 'Сохранить текущий разговор как шаблон',
   },
   com_endpoint_my_preset: {
     english: 'My Preset',
-    translated: 'Мой Ассистент',
+    translated: 'Мой шаблон',
   },
   com_endpoint_agent_model: {
     english: 'Agent Model (Recommended: GPT-3.5)',
@@ -2560,7 +2563,7 @@ export const comparisons = {
   },
   com_ui_mention: {
     english: 'Mention an endpoint, assistant, or preset to quickly switch to it',
-    translated: 'Упомянуть конечную точку, помощника или предустановку для быстрого переключения',
+    translated: 'Упомянуть сервис, ассистента или шаблон для быстрого переключения',
   },
   com_ui_import_conversation_file_type_error: {
     english: 'Unsupported import type',

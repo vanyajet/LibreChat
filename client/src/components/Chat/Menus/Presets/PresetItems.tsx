@@ -6,7 +6,7 @@ import type { FC } from 'react';
 import type { TPreset } from 'librechat-data-provider';
 import { getPresetTitle, getEndpointField, getIconKey } from '~/utils';
 import FileUpload from '~/components/Chat/Input/Files/FileUpload';
-import { PinIcon, EditIcon, TrashIcon } from '~/components/svg';
+import { EditIcon, TrashIcon } from '~/components/svg';
 import {
   Dialog,
   DialogTrigger,
@@ -22,13 +22,14 @@ import { icons } from '../Endpoints/Icons';
 import { useLocalize } from '~/hooks';
 import { cn } from '~/utils';
 import store from '~/store';
-import { InfoIcon } from 'lucide-react';
+import { CopyIcon, InfoIcon, PinIcon, PinOffIcon } from 'lucide-react';
 
 const PresetItems: FC<{
   presets: TPreset[];
   onSetDefaultPreset: (preset: TPreset, remove?: boolean) => void;
   onSelectPreset: (preset: TPreset) => void;
   onChangePreset: (preset: TPreset) => void;
+  onDuplicatePreset: (preset: TPreset) => void;
   onDeletePreset: (preset: TPreset) => void;
   clearAllPresets: () => void;
   onFileSelected: (jsonData: Record<string, unknown>) => void;
@@ -37,6 +38,7 @@ const PresetItems: FC<{
   onSetDefaultPreset,
   onSelectPreset,
   onChangePreset,
+  onDuplicatePreset,
   onDeletePreset,
   clearAllPresets,
   onFileSelected,
@@ -154,7 +156,7 @@ const PresetItems: FC<{
                       data-testid={`preset-item-${preset}`}
                     >
                       <div className="flex h-full items-center justify-end gap-1">
-                        <TooltipProvider delayDuration={250}>
+                        <TooltipProvider delayDuration={100}>
                           <Tooltip>
                             <button
                               className="m-0 h-full rounded-md p-2 text-gray-400 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 sm:invisible sm:group-hover:visible"
@@ -173,24 +175,58 @@ const PresetItems: FC<{
                               </TooltipContent>
                             </button>
                           </Tooltip>
+                          <Tooltip>
+                            <button
+                              className={cn(
+                                'm-0 h-full rounded-md p-2 text-gray-400 hover:text-gray-700 dark:bg-gray-600 dark:text-gray-400 dark:hover:text-gray-200 sm:invisible sm:group-hover:visible',
+                                defaultPreset?.presetId === preset.presetId
+                                  ? ''
+                                  : 'sm:invisible sm:group-hover:visible',
+                              )}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                onSetDefaultPreset(
+                                  preset,
+                                  defaultPreset?.presetId === preset.presetId,
+                                );
+                              }}
+                            >
+                              <TooltipTrigger asChild>
+                                {defaultPreset?.presetId === preset.presetId ? (
+                                  <PinOffIcon size={16} />
+                                ) : (
+                                  <PinIcon size={16} />
+                                )}
+                              </TooltipTrigger>
+                              <TooltipContent side="bottom" sideOffset={0}>
+                                {localize('com_endpoint_preset_set_default')}
+                              </TooltipContent>
+                            </button>
+                          </Tooltip>
+                          <Tooltip>
+                            <button
+                              className="m-0 h-full rounded-md p-2 text-gray-400 hover:text-gray-700 dark:bg-gray-600 dark:text-gray-400 dark:hover:text-gray-200 sm:invisible sm:group-hover:visible"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                onDuplicatePreset(preset);
+                              }}
+                            >
+                              <TooltipTrigger asChild>
+                                <CopyIcon size={16} />
+                              </TooltipTrigger>
+                              <TooltipContent side="bottom" sideOffset={0}>
+                                {localize('com_endpoint_preset_duplicate')}
+                              </TooltipContent>
+                            </button>
+                          </Tooltip>
                         </TooltipProvider>
                         <button
                           className={cn(
                             'm-0 h-full rounded-md p-2 text-gray-400 hover:text-gray-700 dark:bg-gray-600 dark:text-gray-400 dark:hover:text-gray-200 sm:invisible sm:group-hover:visible',
-                            defaultPreset?.presetId === preset.presetId
-                              ? ''
-                              : 'sm:invisible sm:group-hover:visible',
+                            preset.user === 'any' ? 'hidden' : '',
                           )}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            onSetDefaultPreset(preset, defaultPreset?.presetId === preset.presetId);
-                          }}
-                        >
-                          <PinIcon unpin={defaultPreset?.presetId === preset.presetId} />
-                        </button>
-                        <button
-                          className="m-0 h-full rounded-md p-2 text-gray-400 hover:text-gray-700 dark:bg-gray-600 dark:text-gray-400 dark:hover:text-gray-200 sm:invisible sm:group-hover:visible"
                           onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
@@ -201,7 +237,10 @@ const PresetItems: FC<{
                           <EditIcon />
                         </button>
                         <button
-                          className="m-0 h-full rounded-md p-2 text-gray-400 hover:text-gray-600 dark:bg-gray-600 dark:text-gray-400 dark:hover:text-gray-200 sm:invisible sm:group-hover:visible"
+                          className={cn(
+                            'm-0 h-full rounded-md p-2 text-gray-400 hover:text-gray-700 dark:bg-gray-600 dark:text-gray-400 dark:hover:text-gray-200 sm:invisible sm:group-hover:visible',
+                            preset.user === 'any' ? 'hidden' : '',
+                          )}
                           onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
