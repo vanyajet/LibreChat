@@ -4,16 +4,13 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Project",
+      "name": "Launch LibreChat (debug)",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/index.js",
-      "runtimeExecutable": "node",
+      "program": "${workspaceFolder}/api/server/index.js",
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "production"
       },
-      "outputCapture": "std",
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
+      "console": "integratedTerminal"
     }
   ]
 }
