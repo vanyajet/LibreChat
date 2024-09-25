@@ -290,7 +290,7 @@ export default function Settings({ conversation, setOption, models, readonly }: 
               disabled={readonly}
               value={[(temperatureValue as number) ?? 1]}
               onValueChange={(value) => setTemperature(value[0])}
-              doubleClickHandler={() => setTemperature(1)}
+              // doubleClickHandler={() => setTemperature(1)}
               max={2}
               min={0}
               step={0.01}
@@ -328,7 +328,7 @@ export default function Settings({ conversation, setOption, models, readonly }: 
               disabled={readonly}
               value={[(topPValue as number) ?? 1]}
               onValueChange={(value) => setTopP(value[0])}
-              doubleClickHandler={() => setTopP(1)}
+              // doubleClickHandler={() => setTopP(1)}
               max={1}
               min={0}
               step={0.01}
@@ -367,7 +367,7 @@ export default function Settings({ conversation, setOption, models, readonly }: 
               disabled={readonly}
               value={[(freqPValue as number) ?? 0]}
               onValueChange={(value) => setFreqP(value[0])}
-              doubleClickHandler={() => setFreqP(0)}
+              // doubleClickHandler={() => setFreqP(0)}
               max={2}
               min={-2}
               step={0.01}
@@ -406,7 +406,7 @@ export default function Settings({ conversation, setOption, models, readonly }: 
               disabled={readonly}
               value={[(presPValue as number) ?? 0]}
               onValueChange={(value) => setPresP(value[0])}
-              doubleClickHandler={() => setPresP(0)}
+              // doubleClickHandler={() => setPresP(0)}
               max={2}
               min={-2}
               step={0.01}
@@ -463,7 +463,7 @@ export default function Settings({ conversation, setOption, models, readonly }: 
                     imageDetailNumeric[imageDetail ?? ''] ?? imageDetailNumeric[ImageDetail.auto],
                   ]}
                   onValueChange={(value) => setImageDetail(imageDetailValue[value[0]])}
-                  doubleClickHandler={() => setImageDetail(ImageDetail.auto)}
+                  // doubleClickHandler={() => setImageDetail(ImageDetail.auto)}
                   max={2}
                   min={0}
                   step={1}

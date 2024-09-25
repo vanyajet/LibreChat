@@ -1,17 +1,21 @@
-import { EModelEndpoint, isAssistantsEndpoint, isPluginsEndpoint } from 'librechat-data-provider';
+import { useMemo } from 'react';
+import { EModelEndpoint, isAssistantsEndpoint, Constants, isPluginsEndpoint } from 'librechat-data-provider';
 import { useGetEndpointsQuery, useGetStartupConfig } from 'librechat-data-provider/react-query';
 import { useCallback, useEffect, useState, type ReactNode } from 'react';
-import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '~/components/ui';
 import { useChatContext, useAssistantsMapContext } from '~/Providers';
+import { useGetAssistantDocsQuery } from '~/data-provider';
 import ConvoIcon from '~/components/Endpoints/ConvoIcon';
+import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '../ui/OldTooltip';
+import { TooltipAnchor } from '~/components/ui';
 import { BirthdayIcon } from '~/components/svg';
 import { getIconEndpoint, cn } from '~/utils';
-import { useAuthContext, useLocalize, usePluginDialogHelpers } from '~/hooks';
+import { useAuthContext, useLocalize, usePluginDialogHelpers, useSubmitMessage } from '~/hooks';
 import { useAvailablePluginsQuery } from 'librechat-data-provider/react-query';
 import { usePluginInstall } from '~/hooks';
 import { TPlugin, TPluginAction, TError } from 'librechat-data-provider';
 import { useSetIndexOptions } from '~/hooks';
 import PluginLandingItem from '../Plugins/Store/PluginLandingItem';
+import ConvoStarter from './ConvoStarter';
 
 export default function Landing({ Header }: { Header?: ReactNode }) {
   const { preset, conversation, index, setPreset } = useChatContext();
@@ -28,16 +32,13 @@ export default function Landing({ Header }: { Header?: ReactNode }) {
   let { endpoint = '' } = conversation ?? {};
   const { assistant_id = null } = conversation ?? {};
 
-  const iconURL = conversation?.iconURL;
-  endpoint = getIconEndpoint({ endpointsConfig, iconURL, endpoint });
-
   const isAssistant = isAssistantsEndpoint(endpoint);
   // const isPlugins = isPluginsEndpoint(endpoint);
   const isPlugins = false;
   const isPreset = !!conversation?.promptPrefix;
   const presetName = conversation?.chatGptLabel || conversation?.modelLabel;
   const presetDesc = conversation?.description;
-  const assistant = isAssistant && assistantMap?.[endpoint]?.[assistant_id ?? ''];
+  const assistant = isAssistant ? assistantMap?.[endpoint][assistant_id ?? ''] : undefined;
   const assistantName = (assistant && assistant?.name) || '';
   const assistantDesc = (assistant && assistant?.description) || '';
   const avatar = (assistant && (assistant?.metadata?.avatar as string)) || '';
@@ -51,6 +52,23 @@ export default function Landing({ Header }: { Header?: ReactNode }) {
   ) {
     endpoint = EModelEndpoint.openAI;
   }
+
+  const iconURL = conversation?.iconURL;
+  endpoint = getIconEndpoint({ endpointsConfig, iconURL, endpoint });
+  const { data: documentsMap = new Map() } = useGetAssistantDocsQuery(endpoint, {
+    select: (data) => new Map(data.map((dbA) => [dbA.assistant_id, dbA])),
+  });
+
+
+  const conversation_starters = useMemo(() => {
+    /* The user made updates, use client-side cache,  */
+    if (assistant?.conversation_starters) {
+      return assistant.conversation_starters;
+    }
+    /* If none in cache, we use the latest assistant docs */
+    const assistantDocs = documentsMap.get(assistant_id ?? '');
+    return assistantDocs?.conversation_starters ?? [];
+  }, [documentsMap, assistant_id, assistant?.conversation_starters]);
 
   const containerClassName =
     'shadow-stroke relative flex h-full items-center justify-center rounded-full bg-white text-black';
@@ -100,6 +118,9 @@ export default function Landing({ Header }: { Header?: ReactNode }) {
       setUserPlugins(user.plugins);
     }
   }, [user]);
+
+  const { submitMessage } = useSubmitMessage();
+  const sendConversationStarter = (text: string) => submitMessage({ text });
 
   return (
     <TooltipProvider delayDuration={30}>

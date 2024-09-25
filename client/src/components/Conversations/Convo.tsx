@@ -1,26 +1,43 @@
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useRecoilValue } from 'recoil';
+import { Check, X } from 'lucide-react';
 import { useParams } from 'react-router-dom';
-import { useState, useRef, useMemo } from 'react';
+import { Constants } from 'librechat-data-provider';
 import { useGetEndpointsQuery, useGetStartupConfig } from 'librechat-data-provider/react-query';
 import type { MouseEvent, FocusEvent, KeyboardEvent } from 'react';
+import type { TConversation } from 'librechat-data-provider';
+import { useConversations, useNavigateToConvo, useMediaQuery } from '~/hooks';
 import { useUpdateConversationMutation } from '~/data-provider';
 import EndpointIcon from '~/components/Endpoints/EndpointIcon';
-import { useConversations, useLocalize, useNavigateToConvo } from '~/hooks';
 import { NotificationSeverity } from '~/common';
 import { ArchiveIcon } from '~/components/svg';
 import { useToastContext } from '~/Providers';
+import { ConvoOptions } from './ConvoOptions';
 import DropDownMenu from './DropDownMenu';
 import ArchiveButton from './ArchiveButton';
 import DeleteButton from './DeleteButton';
 import RenameButton from './RenameButton';
 import HoverToggle from './HoverToggle';
+import ShareButton from './ShareButton';
 import { cn } from '~/utils';
 import store from '~/store';
-import ShareButton from './ShareButton';
+import { useLocalize } from '~/hooks'
 
 type KeyEvent = KeyboardEvent<HTMLInputElement>;
 
-export default function Conversation({ conversation, retainView, toggleNav, isLatestConvo }) {
+type ConversationProps = {
+  conversation: TConversation;
+  retainView: () => void;
+  toggleNav: () => void;
+  isLatestConvo: boolean;
+};
+
+export default function Conversation({
+  conversation,
+  retainView,
+  toggleNav,
+  isLatestConvo,
+}: ConversationProps) {
   const params = useParams();
   const localize = useLocalize();
   const currentConvoId = useMemo(() => params.conversationId, [params.conversationId]);
@@ -36,36 +53,43 @@ export default function Conversation({ conversation, retainView, toggleNav, isLa
   const [titleInput, setTitleInput] = useState(title);
   const [renaming, setRenaming] = useState(false);
   const [isPopoverActive, setIsPopoverActive] = useState(false);
+  const isSmallScreen = useMediaQuery('(max-width: 768px)');
 
-  const clickHandler = async (event: React.MouseEvent<HTMLAnchorElement>) => {
+  const clickHandler = async (event: MouseEvent<HTMLAnchorElement>) => {
     if (event.button === 0 && (event.ctrlKey || event.metaKey)) {
       toggleNav();
       return;
     }
 
     event.preventDefault();
-    if (currentConvoId === conversationId) {
+    if (currentConvoId === conversationId || isPopoverActive) {
       return;
     }
 
     toggleNav();
 
     // set document title
-    document.title = title;
-    navigateWithLastTools(conversation);
+    if (typeof title === 'string' && title.length > 0) {
+      document.title = title;
+    }
+    /* Note: Latest Message should not be reset if existing convo */
+    navigateWithLastTools(
+      conversation,
+      !(conversationId ?? '') || conversationId === Constants.NEW_CONVO,
+    );
   };
 
-  const renameHandler = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const renameHandler: (e: MouseEvent<HTMLButtonElement>) => void = () => {
+    setIsPopoverActive(false);
     setTitleInput(title);
     setRenaming(true);
-    setTimeout(() => {
-      if (!inputRef.current) {
-        return;
-      }
-      inputRef.current.focus();
-    }, 25);
   };
+
+  useEffect(() => {
+    if (renaming && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [renaming]);
 
   const onRename = (e: MouseEvent<HTMLButtonElement> | FocusEvent<HTMLInputElement> | KeyEvent) => {
     e.preventDefault();
@@ -73,8 +97,12 @@ export default function Conversation({ conversation, retainView, toggleNav, isLa
     if (titleInput === title) {
       return;
     }
+    if (typeof conversationId !== 'string' || conversationId === '') {
+      return;
+    }
+
     updateConvoMutation.mutate(
-      { conversationId, title: titleInput },
+      { conversationId, title: titleInput ?? '' },
       {
         onSuccess: () => refreshConversations(),
         onError: () => {
@@ -98,28 +126,47 @@ export default function Conversation({ conversation, retainView, toggleNav, isLa
     }
   };
 
-  const isActiveConvo =
+  const cancelRename = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setTitleInput(title);
+    setRenaming(false);
+  };
+
+  const isActiveConvo: boolean =
     currentConvoId === conversationId ||
-    (isLatestConvo && currentConvoId === 'new' && activeConvos[0] && activeConvos[0] !== 'new');
+    (isLatestConvo &&
+      currentConvoId === 'new' &&
+      activeConvos[0] != null &&
+      activeConvos[0] !== 'new');
 
   return (
     <div
       className={cn(
-        'hover:bg-token-sidebar-surface-secondary group relative rounded-lg active:opacity-90',
+        'group relative mt-2 flex h-9 w-full items-center rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700',
+        isActiveConvo ? 'bg-gray-200 dark:bg-gray-700' : '',
+        isSmallScreen ? 'h-12' : '',
       )}
     >
       {/* Chat button */}
       {renaming ? (
-        <div className="absolute inset-0 z-50 flex w-full items-center rounded-lg bg-gray-200 p-1.5 dark:bg-gray-700">
+        <div className="absolute inset-0 z-20 flex w-full items-center rounded-lg bg-gray-200 p-1.5 dark:bg-gray-700">
           <input
             ref={inputRef}
             type="text"
-            className="w-full rounded border border-blue-500 bg-transparent p-0.5 text-sm leading-tight outline-none"
-            value={titleInput}
+            className="w-full rounded bg-transparent p-0.5 text-sm leading-tight outline-none"
+            value={titleInput ?? ''}
             onChange={(e) => setTitleInput(e.target.value)}
-            onBlur={onRename}
             onKeyDown={handleKeyDown}
+            aria-label={`${localize('com_ui_rename')} ${localize('com_ui_chat')}`}
           />
+          <div className="flex gap-1">
+            <button onClick={cancelRename} aria-label={`${localize('com_ui_cancel')} ${localize('com_ui_rename')}`}>
+              <X aria-hidden={true} className="transition-colors h-4 w-4 duration-200 ease-in-out hover:opacity-70" />
+            </button>
+            <button onClick={onRename} aria-label={`${localize('com_ui_submit')} ${localize('com_ui_rename')}`}>
+              <Check aria-hidden={true} className="transition-colors h-4 w-4 duration-200 ease-in-out hover:opacity-70" />
+            </button>
+          </div>
         </div>
       ) : (
         <HoverToggle

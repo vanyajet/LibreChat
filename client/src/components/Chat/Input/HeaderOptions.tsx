@@ -2,16 +2,16 @@ import { useRecoilState } from 'recoil';
 import { Settings2 } from 'lucide-react';
 import { Root, Anchor } from '@radix-ui/react-popover';
 import { useState, useEffect, useMemo } from 'react';
-import { tPresetUpdateSchema, EModelEndpoint } from 'librechat-data-provider';
+import { tPresetUpdateSchema, EModelEndpoint, isParamEndpoint } from 'librechat-data-provider';
 import type { TPreset, TInterfaceConfig } from 'librechat-data-provider';
 import { EndpointSettings, SaveAsPresetDialog, AlternativeSettings } from '~/components/Endpoints';
+import { Button, PluginStoreDialog, TooltipAnchor } from '~/components';
 import { ModelSelect } from '~/components/Input/ModelSelect';
-import { PluginStoreDialog } from '~/components';
+import { useSetIndexOptions, useLocalize } from '~/hooks';
 import OptionsPopover from './OptionsPopover';
 import PopoverButtons from './PopoverButtons';
-import { useLocalize, useSetIndexOptions } from '~/hooks';
 import { useChatContext } from '~/Providers';
-import { Button, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '~/components/ui';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../../ui/OldTooltip';
 import { cn, cardStyle } from '~/utils/';
 import store from '~/store';
 
@@ -30,10 +30,10 @@ export default function HeaderOptions({
   const { setOption } = useSetIndexOptions();
   const localize = useLocalize();
 
-  const { endpoint, conversationId, jailbreak } = conversation ?? {};
+  const { endpoint, endpointType, conversationId, jailbreak = false } = conversation ?? {};
 
   const altConditions: { [key: string]: boolean } = {
-    bingAI: !!(latestMessage && conversation?.jailbreak && endpoint === 'bingAI'),
+    bingAI: !!(latestMessage && jailbreak && endpoint === 'bingAI'),
   };
 
   const altSettings: { [key: string]: () => void } = {
@@ -66,6 +66,8 @@ export default function HeaderOptions({
   const triggerAdvancedMode = altConditions[endpoint]
     ? altSettings[endpoint]
     : () => setShowPopover((prev) => !prev);
+
+  const paramEndpoint = isParamEndpoint(endpoint, endpointType);
   return (
     <Root
       open={showPopover}

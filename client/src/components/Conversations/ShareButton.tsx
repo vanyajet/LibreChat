@@ -1,12 +1,4 @@
 import { useState } from 'react';
-import {
-  Dialog,
-  Tooltip,
-  DialogTrigger,
-  TooltipContent,
-  TooltipTrigger,
-  TooltipProvider,
-} from '~/components/ui';
 import { Share2Icon } from 'lucide-react';
 import type { TSharedLink } from 'librechat-data-provider';
 import DialogTemplate from '~/components/ui/DialogTemplate';
@@ -14,6 +6,8 @@ import SharedLinkButton from './SharedLinkButton';
 import ShareDialog from './ShareDialog';
 import { useLocalize } from '~/hooks';
 import { cn } from '~/utils';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/OldTooltip';
+import { Dialog, DialogTrigger } from '../ui';
 
 export default function ShareButton({
   conversationId,
@@ -47,6 +41,7 @@ export default function ShareButton({
         </>
       );
     }
+
     return (
       <TooltipProvider delayDuration={250}>
         <Tooltip>

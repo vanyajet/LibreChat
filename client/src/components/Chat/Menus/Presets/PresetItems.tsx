@@ -7,15 +7,6 @@ import type { TPreset } from 'librechat-data-provider';
 import { getPresetTitle, getEndpointField, getIconKey } from '~/utils';
 import FileUpload from '~/components/Chat/Input/Files/FileUpload';
 import { EditIcon, TrashIcon } from '~/components/svg';
-import {
-  Dialog,
-  DialogTrigger,
-  Label,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '~/components/ui';
 import DialogTemplate from '~/components/ui/DialogTemplate';
 import { MenuSeparator, MenuItem } from '../UI';
 import { icons } from '../Endpoints/Icons';
@@ -23,6 +14,8 @@ import { useLocalize } from '~/hooks';
 import { cn } from '~/utils';
 import store from '~/store';
 import { CopyIcon, InfoIcon, PinIcon, PinOffIcon } from 'lucide-react';
+import { Dialog, Label } from '../../../ui';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../../../ui/OldTooltip';
 
 const PresetItems: FC<{
   presets: TPreset[];
@@ -56,7 +49,7 @@ const PresetItems: FC<{
         <div className="flex h-full grow items-center justify-between gap-2">
           <label
             htmlFor="default-preset"
-            className="w-40 truncate rounded bg-transparent py-1 text-xs font-medium font-normal text-gray-600 transition-colors dark:bg-transparent dark:text-gray-300 sm:w-72"
+            className="w-40 truncate rounded bg-transparent py-1 text-xs font-medium text-gray-600 transition-colors dark:bg-transparent dark:text-gray-300 sm:w-72"
           >
             {defaultPreset
               ? `${localize('com_endpoint_preset_default_item')} ${defaultPreset.title}`
@@ -67,7 +60,7 @@ const PresetItems: FC<{
             {/* <DialogTrigger asChild>
               <label
                 htmlFor="file-upload"
-                className="mr-1 flex h-[32px] cursor-pointer items-center rounded bg-transparent px-2 py-1 text-xs font-medium font-normal text-gray-600 transition-colors hover:bg-gray-100 hover:text-red-700 dark:bg-transparent dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-green-500 dark:hover:text-red-700"
+                className="mr-1 flex h-[32px] cursor-pointer items-center rounded bg-transparent px-2 py-1 text-xs font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-red-700 dark:bg-transparent dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-red-700"
               >
                 <svg
                   width="24"
@@ -224,7 +217,7 @@ const PresetItems: FC<{
                         </TooltipProvider>
                         <button
                           className={cn(
-                            'm-0 h-full rounded-md p-2 text-gray-400 hover:text-gray-700 dark:bg-gray-600 dark:text-gray-400 dark:hover:text-gray-200 sm:invisible sm:group-hover:visible',
+                            'm-0 h-full rounded-md p-2 text-gray-400 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 sm:invisible sm:group-hover:visible',
                             preset.user === 'any' ? 'hidden' : '',
                           )}
                           onClick={(e) => {
@@ -238,7 +231,7 @@ const PresetItems: FC<{
                         </button>
                         <button
                           className={cn(
-                            'm-0 h-full rounded-md p-2 text-gray-400 hover:text-gray-700 dark:bg-gray-600 dark:text-gray-400 dark:hover:text-gray-200 sm:invisible sm:group-hover:visible',
+                            'm-0 h-full rounded-md p-2 text-gray-400 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 sm:invisible sm:group-hover:visible',
                             preset.user === 'any' ? 'hidden' : '',
                           )}
                           onClick={(e) => {

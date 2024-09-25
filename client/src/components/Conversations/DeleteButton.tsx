@@ -5,17 +5,15 @@ import { useParams, useNavigate } from 'react-router-dom';
 import type { TMessage } from 'librechat-data-provider';
 import { useDeleteConversationMutation } from '~/data-provider';
 import {
-  Dialog,
-  DialogTrigger,
-  Label,
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '~/components/ui';
+} from '../ui/OldTooltip';
 import DialogTemplate from '~/components/ui/DialogTemplate';
 import { TrashIcon, CrossIcon } from '~/components/svg';
 import { useLocalize, useNewConvo } from '~/hooks';
+import { Dialog, DialogTrigger, Label } from '../ui';
 
 export default function DeleteButton({
   conversationId,

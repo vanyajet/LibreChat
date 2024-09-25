@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import type { MouseEvent, FocusEvent, KeyboardEvent } from 'react';
-import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '~/components/ui';
+import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '../ui/OldTooltip';
 import { useConversations, useLocalize, useNewConvo } from '~/hooks';
 import { useArchiveConversationMutation } from '~/data-provider';
 import { NotificationSeverity } from '~/common';
