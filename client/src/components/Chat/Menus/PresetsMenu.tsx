@@ -6,7 +6,7 @@ import { useLocalize, usePresets } from '~/hooks';
 import { useChatContext } from '~/Providers';
 import { TooltipAnchor } from '~/components';
 import { cn } from '~/utils';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../../ui';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../../ui/OldTooltip';
 
 const PresetsMenu: FC = () => {
   const localize = useLocalize();

@@ -7,15 +7,6 @@ import type { TPreset } from 'librechat-data-provider';
 import { getPresetTitle, getEndpointField, getIconKey } from '~/utils';
 import FileUpload from '~/components/Chat/Input/Files/FileUpload';
 import { EditIcon, TrashIcon } from '~/components/svg';
-import {
-  Dialog,
-  DialogTrigger,
-  Label,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '~/components/ui';
 import DialogTemplate from '~/components/ui/DialogTemplate';
 import { MenuSeparator, MenuItem } from '../UI';
 import { icons } from '../Endpoints/Icons';
@@ -23,6 +14,8 @@ import { useLocalize } from '~/hooks';
 import { cn } from '~/utils';
 import store from '~/store';
 import { CopyIcon, InfoIcon, PinIcon, PinOffIcon } from 'lucide-react';
+import { Dialog, Label } from '../../../ui';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../../../ui/OldTooltip';
 
 const PresetItems: FC<{
   presets: TPreset[];

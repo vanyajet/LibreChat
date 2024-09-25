@@ -1,10 +1,10 @@
 import { cloneElement, type FC } from 'react';
 import { DotsIcon } from '~/components/svg';
 import { Content, Portal, Root, Trigger } from '@radix-ui/react-popover';
-import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '~/components/ui';
 import { useToggle } from './ToggleContext';
 import { useLocalize } from '~/hooks';
 import { cn } from '~/utils';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/OldTooltip';
 
 type DropDownMenuProps = {
   children: React.ReactNode;

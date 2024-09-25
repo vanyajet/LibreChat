@@ -5,13 +5,13 @@ import { useState, useEffect, useMemo } from 'react';
 import { tPresetUpdateSchema, EModelEndpoint, isParamEndpoint } from 'librechat-data-provider';
 import type { TPreset, TInterfaceConfig } from 'librechat-data-provider';
 import { EndpointSettings, SaveAsPresetDialog, AlternativeSettings } from '~/components/Endpoints';
-import { PluginStoreDialog, TooltipAnchor } from '~/components';
+import { Button, PluginStoreDialog, TooltipAnchor } from '~/components';
 import { ModelSelect } from '~/components/Input/ModelSelect';
 import { useSetIndexOptions, useLocalize } from '~/hooks';
 import OptionsPopover from './OptionsPopover';
 import PopoverButtons from './PopoverButtons';
 import { useChatContext } from '~/Providers';
-import { Button, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '~/components/ui';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../../ui/OldTooltip';
 import { cn, cardStyle } from '~/utils/';
 import store from '~/store';
 
