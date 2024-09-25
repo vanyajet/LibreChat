@@ -414,6 +414,7 @@ export function validateSettingDefinitions(settings: SettingsConfiguration): voi
 
     // Default columnSpan
     if (!setting.columnSpan) {
+      // @ts-ignore
       setting.columnSpan = Math.floor(columns / 2);
     }
 
