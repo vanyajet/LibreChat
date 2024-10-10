@@ -14,10 +14,12 @@ transactionSchema.methods.calculateTokenValue = function () {
   const { valueKey, tokenType, model, endpointTokenConfig } = this;
   const multiplier = Math.abs(getMultiplier({ valueKey, tokenType, model, endpointTokenConfig }));
   this.rate = multiplier;
-  this.tokenValue = this.rawAmount * multiplier;
-  if (this.context && this.tokenType === 'completion' && this.context === 'incomplete') {
-    this.tokenValue = Math.ceil(this.tokenValue * cancelRate);
-    this.rate *= cancelRate;
+  if (tokenType !== 'topUp') {
+    this.tokenValue = this.rawAmount * multiplier;
+    if (this.context && this.tokenType === 'completion' && this.context === 'incomplete') {
+      this.tokenValue = Math.ceil(this.tokenValue * cancelRate);
+      this.rate *= cancelRate;
+    }
   }
 };
 
@@ -36,6 +38,10 @@ transactionSchema.statics.create = async function (txData) {
 
   if (!isEnabled(process.env.CHECK_BALANCE)) {
     return;
+  }
+
+  if (transaction.tokenType === 'topUp') {
+    return transaction;
   }
 
   let balance = await Balance.findOne({ user: transaction.user }).lean();

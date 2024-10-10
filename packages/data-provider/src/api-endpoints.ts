@@ -3,6 +3,10 @@ import type { AssistantsEndpoint } from './schemas';
 export const health = () => '/health';
 export const user = () => '/api/user';
 
+export const topUp = () => '/api/payments/topUp';
+
+export const getTransactions = () => '/api/transactions';
+
 export const balance = () => '/api/balance';
 
 export const userPlugins = () => '/api/user/plugins';

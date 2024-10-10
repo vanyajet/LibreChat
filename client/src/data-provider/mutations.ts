@@ -5,6 +5,7 @@ import {
   InfiniteCollections,
   defaultAssistantsVersion,
   ConversationListResponse,
+  TPayment,
 } from 'librechat-data-provider';
 import { useSetRecoilState } from 'recoil';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -31,6 +32,7 @@ import {
   updateConversation,
   deleteConversation,
 } from '~/utils';
+import { Ambulance } from 'lucide-react';
 
 export type TGenTitleMutation = UseMutationResult<
   t.TGenTitleResponse,
@@ -308,8 +310,8 @@ export const useUpdateSharedLinkMutation = (
           // If the shared link is public, add it to the shared links cache list.
           vars.isPublic
             ? // Even if the SharedLink data exists in the database, it is not registered in the cache when isPublic is false.
-          // Therefore, when isPublic is true, use addSharedLink instead of updateSharedLink.
-            addSharedLink(sharedLink, _data)
+              // Therefore, when isPublic is true, use addSharedLink instead of updateSharedLink.
+              addSharedLink(sharedLink, _data)
             : deleteSharedLink(sharedLink, _data.shareId),
           InfiniteCollections.SHARED_LINKS,
           sharedLink.pages[0].pageSize as number,
@@ -1437,5 +1439,19 @@ export const useAcceptTermsMutation = (
     },
     onError: options?.onError,
     onMutate: options?.onMutate,
+  });
+};
+
+export const useBalanceTopUpMutation = (
+  options?: t.BalanceTopUpOptions,
+): UseMutationResult<
+  TPayment, // response data type
+  unknown, // error type
+  object, // request data type (payload type)
+  unknown // context type
+> => {
+  return useMutation([MutationKeys.balanceTopUp], {
+    mutationFn: (payload: object) => dataService.balanceTopUp(payload),
+    ...(options || {}),
   });
 };

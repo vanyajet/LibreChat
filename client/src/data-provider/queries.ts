@@ -34,6 +34,7 @@ import type {
   SharedLinksResponse,
   TUserTermsResponse,
   TAcceptTermsResponse,
+  TTransaction,
 } from 'librechat-data-provider';
 import { findPageForConversation, addFileToCache } from '~/utils';
 
@@ -67,6 +68,17 @@ export const useGetPresetsQuery = (
   config?: UseQueryOptions<TPreset[]>,
 ): QueryObserverResult<TPreset[], unknown> => {
   return useQuery<TPreset[]>([QueryKeys.presets], () => dataService.getPresets(), {
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    refetchOnMount: false,
+    ...config,
+  });
+};
+
+export const useGetTransactionsQuery = (
+  config?: UseQueryOptions<TTransaction[]>,
+): QueryObserverResult<TTransaction[], unknown> => {
+  return useQuery<TTransaction[]>([QueryKeys.transactions], () => dataService.getTransactions(), {
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
     refetchOnMount: false,

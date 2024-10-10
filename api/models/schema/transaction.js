@@ -15,7 +15,7 @@ const transactionSchema = mongoose.Schema(
     },
     tokenType: {
       type: String,
-      enum: ['prompt', 'completion', 'credits'],
+      enum: ['prompt', 'completion', 'credits', 'topUp'],
       required: true,
     },
     model: {
@@ -29,10 +29,32 @@ const transactionSchema = mongoose.Schema(
     },
     rate: Number,
     rawAmount: Number,
-    tokenValue: Number,
+    tokenValue: Number || null,
     inputTokens: { type: Number },
     writeTokens: { type: Number },
     readTokens: { type: Number },
+    description: {
+      type: String,
+    },
+    orderId: {
+      type: String,
+    },
+    receipt: {
+      type: Object,
+    },
+    amount: Number,
+    status: {
+      type: String,
+
+      enum: ['pending', 'initialized', 'confirmed', 'canceled', 'rejected', 'expired'],
+      default: 'initialized',
+    },
+    paymentUrl: {
+      type: String,
+    },
+    paymentId: {
+      type: String,
+    },
   },
   {
     timestamps: true,

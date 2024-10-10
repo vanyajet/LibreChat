@@ -873,12 +873,6 @@ ${convo}
 
         const completionTokens = this.getTokenCount(title);
 
-        console.log(
-          'Open-ai promptTokensCount and completionTokensCount',
-          promptTokens,
-          completionTokens,
-        );
-
         this.recordTokenUsage({ promptTokens, completionTokens, context: 'title' });
       } catch (e) {
         logger.error(

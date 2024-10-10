@@ -48,6 +48,10 @@ const tokenValues = Object.assign(
     'claude-3-opus': { prompt: 0.0008, completion: 0.004 },
     'claude-3-sonnet': { prompt: 0.0015, completion: 0.0008 },
     'claude-3-5-sonnet': { prompt: 0.0015, completion: 0.0028 },
+    'claude-3-5-sonnet-20240620': { prompt: 0.0015, completion: 0.0028 },
+    'claude-3-opus-20240229': { prompt: 0.0008, completion: 0.004 },
+    'claude-3-sonnet-20240229': { prompt: 0.0015, completion: 0.0008 },
+    'claude-3-haiku-20240307': { prompt: 0.00015, completion: 0.00025 },
     'claude-3.5-sonnet': { prompt: 0.0015, completion: 0.0028 },
     'claude-3-haiku': { prompt: 0.00015, completion: 0.00025 },
     'claude-2.1': { prompt: 0.008, completion: 0.004 },
@@ -55,9 +59,9 @@ const tokenValues = Object.assign(
     'claude-instant': { prompt: 0.008, completion: 0.0024 },
     'claude-': { prompt: 0.0008, completion: 0.00024 },
     mistral: { prompt: 0.005, completion: 0.015 },
-  'open-mistral-7b': { prompt: 0.005, completion: 0.015 },
-  'mistral-tiny': { prompt: 0.003, completion: 0.008 },
-  'command-r-plus': { prompt: 0.003, completion: 0.0015 },
+    'open-mistral-7b': { prompt: 0.005, completion: 0.015 },
+    'mistral-tiny': { prompt: 0.003, completion: 0.008 },
+    'command-r-plus': { prompt: 0.003, completion: 0.0015 },
     'command-r': { prompt: 0.0005, completion: 0.00015 },
     /* cohere doesn't have rates for the older command models,
   so this was from https://artificialanalysis.ai/models/command-light/providers */
@@ -75,9 +79,9 @@ const tokenValues = Object.assign(
  * @type {Object.<string, {write: number, read: number }>}
  */
 const cacheTokenValues = {
-  'claude-3.5-sonnet': { write: 3.75, read: 0.3 },
-  'claude-3-5-sonnet': { write: 3.75, read: 0.3 },
-  'claude-3-haiku': { write: 0.3, read: 0.03 },
+  'claude-3.5-sonnet': { write: 0.0015, read: 0.0028 },
+  'claude-3-opus': { write: 0.0008, read: 0.004 },
+  'claude-3-haiku': { write: 0.00015, read: 0.00025 },
 };
 
 /**

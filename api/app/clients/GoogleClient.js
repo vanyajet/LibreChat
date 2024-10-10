@@ -355,8 +355,6 @@ class GoogleClient extends BaseClient {
     this.modelLabel = 'model';
     const promises = [];
     const generativeMessages = await this.formatGenerativeMessages(messages);
-    console.log('generativeMessages', generativeMessages);
-    console.log('Messages', messages);
     promises.push(await this.formatGenerativeMessages(messages));
     promises.push(this.buildAugmentedPrompt(messages));
     const [formattedMessages] = await Promise.all(promises);
@@ -853,11 +851,6 @@ class GoogleClient extends BaseClient {
 
     const promptTokens = this.getTokenCountForMessage(text);
     const completionTokens = this.getTokenCount(responseText);
-    console.log(
-      'Google promptTokensCount and completionTokensCount',
-      promptTokens,
-      completionTokens,
-    );
 
     this.recordTokenUsage({ promptTokens, completionTokens, context: 'message' });
 

@@ -142,7 +142,7 @@ export default function Conversation({
   return (
     <div
       className={cn(
-        'group relative mt-2 flex h-9 w-full items-center rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700',
+        'group relative mt-2 flex h-9 w-full items-center rounded-lg',
         isActiveConvo ? 'bg-gray-200 dark:bg-gray-700' : '',
         isSmallScreen ? 'h-12' : '',
       )}

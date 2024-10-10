@@ -44,6 +44,7 @@ export enum QueryKeys {
   health = 'health',
   userTerms = 'userTerms',
   banner = 'banner',
+  transactions = 'transactions',
 }
 
 export enum MutationKeys {
@@ -60,6 +61,7 @@ export enum MutationKeys {
   updateAction = 'updateAction',
   updateAgentAction = 'updateAgentAction',
   deleteAction = 'deleteAction',
+  balanceTopUp = 'balanceTopUp',
   deleteAgentAction = 'deleteAgentAction',
   deleteUser = 'deleteUser',
   updateRole = 'updateRole',

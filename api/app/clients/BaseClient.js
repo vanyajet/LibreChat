@@ -102,7 +102,6 @@ class BaseClient {
    * @returns {Promise<void>}
    */
   async recordTokenUsage({ promptTokens, completionTokens }) {
-    console.log('recordTokenUsageFUnciton');
     logger.debug('`[BaseClient] recordTokenUsage` not implemented.', {
       promptTokens,
       completionTokens,
@@ -488,7 +487,6 @@ class BaseClient {
       const parts = message.parts.map((part) => {
         if (part.text) {
           const tokenCount = this.getTokenCount(part.text);
-          console.log(part.text, tokenCount);
           promptTokens += tokenCount;
           return {
             ...part,
@@ -502,7 +500,6 @@ class BaseClient {
         parts,
       };
     });
-    console.log('messagesWithTokens', messagesWithTokens, promptTokens);
     return promptTokens;
   }
 

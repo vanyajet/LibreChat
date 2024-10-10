@@ -25,6 +25,8 @@ const keys = require('./keys');
 const user = require('./user');
 const ask = require('./ask');
 const banner = require('./banner');
+const payments = require('./payments');
+const transactions = require('./transactions');
 
 module.exports = {
   ask,
@@ -54,4 +56,6 @@ module.exports = {
   categories,
   staticRoute,
   banner,
+  payments,
+  transactions,
 };

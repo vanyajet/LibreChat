@@ -1,7 +1,7 @@
 import { useRecoilState } from 'recoil';
 import * as Select from '@ariakit/react/select';
 import { Fragment, useState, memo } from 'react';
-import { FileText, LogOut } from 'lucide-react';
+import { FileText, LogOut, Plus, TablePropertiesIcon } from 'lucide-react';
 import { useGetUserBalance, useGetStartupConfig } from 'librechat-data-provider/react-query';
 import { LinkIcon, GearIcon, DropdownMenuSeparator } from '~/components';
 import FilesView from '~/components/Chat/Input/Files/FilesView';
@@ -11,6 +11,10 @@ import { UserIcon } from '~/components/svg';
 import { useLocalize } from '~/hooks';
 import Settings from './Settings';
 import store from '~/store';
+import NavLink from './NavLink';
+import PaymentModal from '../Transactions/PaymentModal';
+import TransactionsModal from '../Transactions/TransactionsModal';
+import { ListBulletIcon } from '@radix-ui/react-icons';
 
 function AccountSettings() {
   const localize = useLocalize();
@@ -19,6 +23,8 @@ function AccountSettings() {
   const balanceQuery = useGetUserBalance({
     enabled: !!isAuthenticated && startupConfig?.checkBalance,
   });
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [showTransactionsModal, setShowTransactionsModal] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showFiles, setShowFiles] = useRecoilState(store.showFiles);
 
@@ -69,6 +75,7 @@ function AccountSettings() {
           transformOrigin: 'bottom',
           marginRight: '0px',
           translate: '0px',
+          maxHeight: 'fit-content',
         }}
       >
         <div className="text-token-text-secondary ml-3 mr-2 py-2 text-sm" role="note">
@@ -78,13 +85,28 @@ function AccountSettings() {
         {startupConfig?.checkBalance === true &&
           balanceQuery.data != null &&
           !isNaN(parseFloat(balanceQuery.data)) && (
-          <>
-            <div className="text-token-text-secondary ml-3 mr-2 py-2 text-sm" role="note">
-              {`Balance: ${parseFloat(balanceQuery.data).toFixed(2)}`}
-            </div>
-            <DropdownMenuSeparator />
-          </>
-        )}
+            <>
+              <div className="text-token-text-secondary ml-3 mr-2 py-2 text-sm" role="note">
+                {`${localize('com_nav_balance')}: ${parseFloat(balanceQuery.data).toFixed(2)}`}
+              </div>
+            </>
+          )}
+
+        <NavLink
+          svg={() => <Plus className="icon-md" />}
+          text={localize('com_nav_top_up') ? localize('com_nav_top_up') : 'Top Up'}
+          className="my-1 rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition duration-500 duration-500 ease-in-out ease-in-out hover:bg-gradient-to-br hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600 hover:transition"
+          clickHandler={() => setShowPaymentModal(true)}
+        />
+        <Select.SelectItem
+          value=""
+          onClick={() => setShowTransactionsModal(true)}
+          className="select-item text-sm"
+        >
+          <TablePropertiesIcon className="icon-md" aria-hidden="true" />
+          {localize('com_nav_transactions')}
+        </Select.SelectItem>
+        <DropdownMenuSeparator />
         <Select.SelectItem
           value=""
           onClick={() => setShowFiles(true)}
@@ -124,6 +146,12 @@ function AccountSettings() {
       </Select.SelectPopover>
       {showFiles && <FilesView open={showFiles} onOpenChange={setShowFiles} />}
       {showSettings && <Settings open={showSettings} onOpenChange={setShowSettings} />}
+      {showPaymentModal && (
+        <PaymentModal open={showPaymentModal} onOpenChange={setShowPaymentModal} />
+      )}
+      {showTransactionsModal && (
+        <TransactionsModal open={showTransactionsModal} onOpenChange={setShowTransactionsModal} />
+      )}
     </Select.SelectProvider>
   );
 }

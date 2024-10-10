@@ -629,6 +629,31 @@ export const tPresetUpdateSchema = tConversationSchema.merge(
 
 export type TPreset = z.infer<typeof tPresetSchema>;
 
+export type TPayment = z.infer<typeof tPaymentSchema>;
+
+export type TTransaction = z.infer<typeof tTransactionSchema>;
+
+export const tPaymentSchema = z.object({
+  message: z.string(),
+  paymentUrl: z.string(),
+});
+
+export const tTransactionSchema = z.object({
+  _id: z.string(),
+  user: z.string(),
+  tokenType: z.string(),
+  description: z.string(),
+  orderId: z.string(),
+  receipt: z.object({}).optional(),
+  amount: z.number(),
+  status: z.string(),
+  rate: z.number().optional(),
+  createdAt: z.date(),
+  updatedAt: z.date(),
+  paymentId: z.string().optional(),
+  paymentUrl: z.string().optional(),
+});
+
 export type TSetOption = (
   param: number | string,
 ) => (newValue: number | string | boolean | string[] | Partial<TPreset>) => void;

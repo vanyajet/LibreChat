@@ -108,6 +108,14 @@ export function deletePreset(arg: s.TPreset | undefined): Promise<m.PresetDelete
   return request.post(endpoints.deletePreset(), arg);
 }
 
+export function balanceTopUp(payload: object): Promise<s.TPayment> {
+  return request.post(endpoints.topUp(), payload);
+}
+
+export function getTransactions(): Promise<s.TTransaction[]> {
+  return request.get(endpoints.getTransactions());
+}
+
 export function getSearchEnabled(): Promise<boolean> {
   return request.get(endpoints.searchEnabled());
 }

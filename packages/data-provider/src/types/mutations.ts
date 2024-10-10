@@ -40,6 +40,8 @@ export type PresetDeleteResponse = {
 
 export type UpdatePresetOptions = MutationOptions<types.TPreset, types.TPreset>;
 
+export type BalanceTopUpOptions = MutationOptions<types.TPayment, object>;
+
 export type DeletePresetOptions = MutationOptions<PresetDeleteResponse, types.TPreset | undefined>;
 
 export type LogoutOptions = MutationOptions<unknown, undefined>;

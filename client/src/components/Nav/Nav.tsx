@@ -168,7 +168,7 @@ const Nav = ({
                     onMouseLeave={handleMouseLeave}
                     ref={containerRef}
                   >
-                    {isSmallScreen == true ? (
+                    {/* {isSmallScreen == true ? (
                       <div className="pt-3.5">
                         {isSearchEnabled === true && (
                           <SearchBar clearSearch={clearSearch} isSmallScreen={isSmallScreen} />
@@ -181,23 +181,23 @@ const Nav = ({
                           />
                         )}
                       </div>
-                    ) : (
-                      <NewChat
-                        toggleNav={itemToggleNav}
-                        subHeaders={
-                          <>
-                            {isSearchEnabled === true && (
-                              <SearchBar clearSearch={clearSearch} isSmallScreen={isSmallScreen} />
-                            )}
-                            <BookmarkNav
-                              tags={tags}
-                              setTags={setTags}
-                              isSmallScreen={isSmallScreen}
-                            />
-                          </>
-                        }
-                      />
-                    )}
+                    ) : ( */}
+                    <NewChat
+                      toggleNav={itemToggleNav}
+                      subHeaders={
+                        <>
+                          {isSearchEnabled === true && (
+                            <SearchBar clearSearch={clearSearch} isSmallScreen={isSmallScreen} />
+                          )}
+                          <BookmarkNav
+                            tags={tags}
+                            setTags={setTags}
+                            isSmallScreen={isSmallScreen}
+                          />
+                        </>
+                      }
+                    />
+                    {/* // )} */}
 
                     <Conversations
                       conversations={conversations}
